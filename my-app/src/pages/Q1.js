@@ -1,9 +1,8 @@
-
-
+// Q1.js
 function Q1() {
   return (
     <div>
-      <h2>Do you prefer a more casual environment or formal?</h2>
+      <h2>Are you looking for mental health or wellness resources?</h2>
     </div>
   );
 }

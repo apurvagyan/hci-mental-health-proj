@@ -1,8 +1,12 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
 import Home from './pages/Home';
-import Final from './pages/Final';
 import Q1 from './pages/Q1';
+import Q2 from './pages/Q2';
+import YC3 from './pages/YC3';
+import YaleHealth from './pages/YaleHealth';
+import Final from './pages/Final';
 
 
 function App() {
@@ -10,12 +14,19 @@ function App() {
     <Router>
     <div>
         <li><Link to="/home">Home</Link></li>
+        <li><Link to="/Q1">Question 1</Link></li>
+        <li><Link to="/Q2">Question 2</Link></li>
+        <li><Link to="/YC3">YC3 Counseling</Link></li>
+        <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
         <li><Link to="/final">Final</Link></li>
-        <li><Link to="/Q1">Let's get started</Link></li>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/final" element={<Final />} />
         <Route path="/Q1" element={<Q1 />} />
+        <Route path="/Q2" element={<Q2 />} />
+        <Route path="/YC3" element={<YC3 />} />
+        <Route path="/YaleHealth" element={<YaleHealth />} />
+        <Route path="/final" element={<Final />} />
+        
         {/* Add more routes here */}
       </Routes>
     </div>
