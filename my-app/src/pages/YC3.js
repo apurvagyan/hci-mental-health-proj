@@ -14,7 +14,7 @@ function YC3() {
               <br/>8:30am - 5pm
             </p>
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
-              <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fyalehealth.yale.edu%2Fdepartment%2Fmental-health-counseling&chs=180x180&choe=UTF-8&chld=L|2" style={{ width: '300px', height: '300px' }}></img>
+              <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fyalehealth.yale.edu%2Fdepartment%2Fmental-health-counseling&chs=180x180&choe=UTF-8&chld=L|2" style={{ width: '300px', height: '300px' }} alt="yc3 qr code"></img>
             </div>
           </div>
           
