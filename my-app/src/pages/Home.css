@@ -1,0 +1,64 @@
+.home-container 
+{
+    background-color: #8EB8CB;
+    color: white;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.main-text
+{
+    font-family: 'Sora', sans-serif; /* Use Sora as the font family */
+    font-weight: bold; 
+    font-size: 64px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+.sub-text
+{
+    font-family: 'Source Serif Pro', serif;
+    font-size: 30px;
+    padding-left: 40px;
+}
+
+.countdown
+{
+    align-items: center; 
+    justify-content: center;
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Set the height of the container */
+  }
+
+  .container {
+    position: relative;
+    height: 100vh; /* Set the container height to the full viewport height */
+  }
+  
+
+.bottom-text
+{
+    font-family: 'Sora', sans-serif; /* Use Sora as the font family */
+    font-weight: bold; 
+    position: fixed;
+    font-size: 48px;
+    bottom: 40px;
+    right: 0;
+    margin: 20px;
+    padding-right: 20px;
+}
+
+.bottom-final
+{
+    font-family: 'Source Serif Pro', serif;
+    position: fixed;
+    font-size: 30px;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    padding-right: 20px;
+}
