@@ -1,0 +1,34 @@
+ntdown-circle-container {
+  position: absolute;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  position: absolute; 
+  top: 70%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.countdown-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #597A88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  animation: shrink 5s linear forwards;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(4); 
+  }
+  to {
+    transform: scale(1); 
+  }
+}
