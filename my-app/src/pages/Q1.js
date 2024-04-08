@@ -27,6 +27,9 @@ function Q1() {
           </button>
         </div>
       </div>
+      {/* <div> help button
+        <p class='help-text'>raise both hands for help!</p>
+      </div> */}
     </Layout>
   );
 }
