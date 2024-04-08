@@ -2,7 +2,6 @@ import React from 'react';
 import './Home.css'; 
 import Countdown from './CountdownCircle';
 
-
 function Home() {
   return (
     <div className="home-container">
