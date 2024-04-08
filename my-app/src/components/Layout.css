@@ -111,8 +111,8 @@ img {
     position: absolute;
     width: 225px;
     height: 66px;
-    left: 1250px;
-    top: 50px;
+    left: 1265px;
+    top: 55px;
     font-family: 'Source Serif 4';
     font-style: italic;
     font-weight: 400;
@@ -120,6 +120,28 @@ img {
     line-height: 33px;
     text-align: right;
     color: #000000;
+}
+
+.option-position {
+    position: absolute;
+    width: 391.34px;
+    height: 491.62px;
+    top: 169px;
+}
+
+.button-options:hover {
+    background-color: #C9B8E5;
+    border-color: #A08AC3;
+    color: #8871AD;
+}
+
+.help-icon {
+    position: absolute;
+    left: 1380px;
+    /* right: 8.33%; */
+    top: -40px;
+    /* bottom: 8.33%; */
+    border: none; 
 }
 
 /* nawal's CSS comments, ignore for now
@@ -137,7 +159,6 @@ bottom: 8.33%;
 
 background: #000000;
 
-
 raise both hands for help!
 
 position: absolute;
@@ -145,12 +166,10 @@ width: 175px;
 height: 66px;
 left: 1076px;
 top: 96px;
-
 font-family: 'Source Serif 4';
 font-style: italic;
 font-weight: 400;
 font-size: 24px;
 line-height: 33px;
 text-align: right;
-
 color: #000000; */

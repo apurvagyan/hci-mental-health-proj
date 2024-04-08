@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Layout from '../components/Layout'
 import mentalHealthImage from '../images/mental_health_resources.png';
 
