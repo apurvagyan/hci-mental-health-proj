@@ -1,10 +1,16 @@
 // Q2.js
+import React from 'react';
+
+import Layout from '../components/Layout'
 function Q2() {
-    return (
+  return (
+    <Layout>
       <div>
-        <h2>Do you prefer a more casual environment or formal?</h2>
+        <h2>i would prefer a...</h2>
       </div>
-    );
-  }
-  
-  export default Q2;
+    </Layout>
+
+  );
+}
+
+export default Q2;

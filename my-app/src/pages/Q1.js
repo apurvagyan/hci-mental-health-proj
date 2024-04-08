@@ -1,9 +1,15 @@
 // Q1.js
+import React from 'react';
+
+import Layout from '../components/Layout'
 function Q1() {
   return (
-    <div>
-      <h2>Are you looking for mental health or wellness resources? asdf</h2>
-    </div>
+    <Layout>
+      <div>
+        <h2>i am looking for... </h2>
+      </div>
+    </Layout>
+
   );
 }
 
