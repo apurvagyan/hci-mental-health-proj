@@ -6,6 +6,7 @@ import Q1 from './pages/Q1';
 import Q2 from './pages/Q2';
 import YC3 from './pages/YC3';
 import YaleHealth from './pages/YaleHealth';
+import CentralizedResources from './pages/CentralizedResources';
 import Final from './pages/Final';
 
 
@@ -18,6 +19,7 @@ function App() {
         <li><Link to="/Q2">Question 2</Link></li>
         <li><Link to="/YC3">YC3 Counseling</Link></li>
         <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
+        <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
         <li><Link to="/final">Final</Link></li>
       <Routes>
         <Route path="/home" element={<Home />} />
@@ -25,8 +27,9 @@ function App() {
         <Route path="/Q2" element={<Q2 />} />
         <Route path="/YC3" element={<YC3 />} />
         <Route path="/YaleHealth" element={<YaleHealth />} />
+        <Route path="/CentralizedResources" element={<CentralizedResources />} />
         <Route path="/final" element={<Final />} />
-        
+
         {/* Add more routes here */}
       </Routes>
     </div>
