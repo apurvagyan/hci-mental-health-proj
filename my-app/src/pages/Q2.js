@@ -12,7 +12,7 @@ function Q2() {
         <h2 class='question'>i would prefer a... </h2>
         <div style={{ position: 'absolute', width: '391.34px', height: '491.62px', left: '146px', top: '169px' }}>
           <button class='button-options'>
-            <img src={sunbathing} class='option-one-img' alt="person's head with brain"></img>
+            <img src={sunbathing} class='option-one-img' alt="person lying on their back on a chair with their knees up bathing in the sun"></img>
             <p class='text-options'>casual environment</p>
           </button>
         </div>
@@ -22,7 +22,7 @@ function Q2() {
         </div>
         <div style={{ position: 'absolute', width: '391.34px', height: '491.62px', left: '753px', top: '169px' }}>
           <button class='button-options'>
-            <img src={doctor} class='option-two-img' alt="person's head with brain"></img>
+            <img src={doctor} class='option-two-img' alt="person with a stethoscope around their shoulders wearing an apron"></img>
             <p class='text-options'>formal environment</p>
           </button>
         </div>
