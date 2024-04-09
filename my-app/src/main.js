@@ -41,6 +41,13 @@ function App() {
   return (
     <Router>
     <div>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/Q1">Question 1</Link></li>
+        <li><Link to="/Q2">Question 2</Link></li>
+        <li><Link to="/YC3">YC3 Counseling</Link></li>
+        <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
+        <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
+        <li><Link to="/final">Final</Link></li>
       <Routes>
         <Route path="/" element={<Home />} /> {/* default page */}
         <Route path="/Q1" element={<Q1 />} />
