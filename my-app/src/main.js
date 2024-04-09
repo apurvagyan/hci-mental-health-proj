@@ -41,7 +41,7 @@ function App() {
   return (
     <Router>
     <div>
-        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/Q1">Question 1</Link></li>
         <li><Link to="/Q2">Question 2</Link></li>
         <li><Link to="/YC3">YC3 Counseling</Link></li>
@@ -49,7 +49,7 @@ function App() {
         <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
         <li><Link to="/final">Final</Link></li>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} /> {/* default page */}
         <Route path="/Q1" element={<Q1 />} />
         <Route path="/Q2" element={<Q2 />} />
         <Route path="/YC3" element={<YC3 />} />
