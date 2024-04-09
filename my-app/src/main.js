@@ -9,6 +9,33 @@ import YaleHealth from './pages/YaleHealth';
 import CentralizedResources from './pages/CentralizedResources';
 import Final from './pages/Final';
 
+import $ from 'jquery';
+
+// set up host for becton center tv
+var host = "cpsc484-02.stdusr.yale.internal:8888";
+
+// call start method to run frames
+$(document).ready(function () {
+    frames.start();
+});
+
+// define frames for program execution
+var frames = {
+    socket: null,
+
+    start: function () {
+        var url = "ws://" + host + "/frames";
+        frames.socket = new WebSocket(url);
+        frames.socket.onmessage = function (event) {
+            frames.show(JSON.parse(event.data));
+        }
+    },
+
+    show: function (frame) {
+        console.log(frame);
+    }
+};
+
 
 function App() {
   return (
