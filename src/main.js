@@ -40,14 +40,20 @@ var frames = {
 function App() {
   return (
     <Router>
+<<<<<<< HEAD:my-app/src/main.js
       <div>
         <li><Link to="/home">Home</Link></li>
+=======
+    <div>
+        <li><Link to="/">Home</Link></li>
+>>>>>>> e45582efa8e57fd50b071b44aa9c5e8ac9b3ad42:src/main.js
         <li><Link to="/Q1">Question 1</Link></li>
         <li><Link to="/Q2">Question 2</Link></li>
         <li><Link to="/YC3">YC3 Counseling</Link></li>
         <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
         <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
         <li><Link to="/final">Final</Link></li>
+<<<<<<< HEAD:my-app/src/main.js
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/Q1" element={<Q1 />} />
@@ -65,6 +71,23 @@ function App() {
       </div>
     </Router>
   );
+=======
+      <Routes>
+        <Route path="/" element={<Home />} /> {/* default page */}
+        <Route path="/Q1" element={<Q1 />} />
+        <Route path="/Q2" element={<Q2 />} />
+        <Route path="/YC3" element={<YC3 />} />
+        <Route path="/YaleHealth" element={<YaleHealth />} />
+        <Route path="/CentralizedResources" element={<CentralizedResources />} />
+        <Route path="/final" element={<Final />} />
+
+        {/* Add more routes here */}
+      </Routes>
+    </div>
+  </Router>
+
+);
+>>>>>>> e45582efa8e57fd50b071b44aa9c5e8ac9b3ad42:src/main.js
 };
 
 export default App;
