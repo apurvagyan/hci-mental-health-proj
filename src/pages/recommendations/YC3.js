@@ -1,8 +1,8 @@
 // YC3.js
 
-import Layout from '../components/Layout'
-import { SmallButton } from '../components/Button';
-import yc3 from '../images/yc3.png'
+import Layout from '../../components/Layout'
+import { SmallButton } from '../../components/Button';
+import yc3 from '../../images/yc3.png'
 
 function YC3() {
     return (
@@ -15,7 +15,7 @@ function YC3() {
               <br/>8:30am - 5pm
             </p>
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
-              <img src={yc3} style={{ width: '300px', height: '300px' }} alt="yc3 qr code"></img>
+              <img class="img-qr" src={yc3} alt="yc3 qr code"></img>
             </div>
           </div>
           

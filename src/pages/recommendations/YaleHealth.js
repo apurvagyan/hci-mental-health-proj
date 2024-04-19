@@ -1,8 +1,8 @@
 // YaleHealth.js
 
-import Layout from '../components/Layout'
-import { SmallButton } from '../components/Button';
-import yaleHealth from '../images/yale-health.png';
+import Layout from '../../components/Layout'
+import { SmallButton } from '../../components/Button';
+import yaleHealth from '../../images/yale-health.png';
 
 function YaleHealth() {
     return (
@@ -16,7 +16,7 @@ function YaleHealth() {
               <br/><br/>(203) 432-0290
             </p>
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
-              <img src={yaleHealth} style={{ width: '300px', height: '300px' }} alt="yale health qr code"></img>
+              <img class="img-qr" src={yaleHealth} alt="yale health qr code"></img>
             </div>
           </div>
           
