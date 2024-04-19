@@ -13,11 +13,11 @@ function Q4() {
         <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
         <div class="container">
           <LargeButton img={meditation} 
-                       alt="person laying on chair with knees up under the sun" 
+                       alt="person meditating with sparkles around them" 
                        text="do self care"></LargeButton>
           <div class="divider"></div>
           <LargeButton img={talk} 
-                       alt="person with stethoscope around their shoulders wearing lab coat"
+                       alt="two people talking with dialogue bubbles above them"
                        text="talk to someone"></LargeButton>
         </div>
       {/* </div> */}
