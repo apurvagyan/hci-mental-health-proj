@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 // set up host for becton center tv
 var host = "cpsc484-02.stdusr.yale.internal:8888";
-var hands_raised = false;
+var hands_raised = true;
 
 // call start method to run frames
 $(document).ready(function () {
@@ -98,8 +98,10 @@ function CountdownCircle() {
                   if (prevCountdown > 0) {
                       return prevCountdown - 1;
                   } else {
-                      clearInterval(interval);
-                      return 0;
+                    clearInterval(interval);
+                    // Navigate to a different page once countdown finishes
+                    window.location.href = '/Instructions';
+                    return 0;
                   }
               });
           }, 1000);
