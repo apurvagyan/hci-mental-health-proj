@@ -9,16 +9,10 @@ function Home() {
         feeling down or stressed lately?
       </div>
       <div className = "sub-text">
-      <div class="container">
-  <div class="row">
-    <div class="col">
-    Let us help you find the best mental health and 
-    </div>
-    <div class="col">
+      Let us help you find the best mental health and 
+      <div class="col">
       wellness resource <b><i>for you.</i></b>
     </div>
-  </div>
-</div>
       </div>
       <div className = "countdown">
         <Countdown />
