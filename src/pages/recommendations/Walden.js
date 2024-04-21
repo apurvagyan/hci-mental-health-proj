@@ -9,7 +9,7 @@ function Walden() {
       <Layout>
         <div>
           <h2>We recommend:</h2>
-          <h1>Walden Peer Counseling</h1>
+          <h1 style={{ textAlign: 'left' }}>Walden Peer Counseling</h1>
           <div style={{ display: 'flex', alignItems: 'stretch' }}>
             <p style={{ marginTop: '50px', marginRight: '100px' }}>Welch Hall, B Basement, 330 College St, 
               <br/>New Haven, CT 06511

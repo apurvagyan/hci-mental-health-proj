@@ -9,7 +9,7 @@ function YC3() {
       <Layout>
         <div>
           <h2>We recommend:</h2>
-          <h1>Yale College Community Care (YC3)</h1>
+          <h1 style={{ textAlign: 'left' }}>Yale College Community Care (YC3)</h1>
           <div style={{ display: 'flex', alignItems: 'stretch' }}>
             <p style={{ marginTop: '50px', marginRight: '100px' }}>(203) 432-0290
               <br/>8:30am - 5pm

@@ -9,7 +9,7 @@ function YaleHealth() {
       <Layout>
         <div>
           <h2>We recommend:</h2>
-          <h1>Yale Health Mental Health and Counseling</h1>
+          <h1 style={{ textAlign: 'left' }}>Yale Health Mental Health and Counseling</h1>
           <div style={{ display: 'flex', alignItems: 'stretch' }}>
             <p style={{ marginTop: '50px', marginRight: '100px' }}>55 Lock Street,
               <br/>New Haven, CT 06520-8237

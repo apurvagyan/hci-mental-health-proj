@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Instructions from './pages/instructions';
 import Q1 from './pages/questions/Q1';
 import Q2 from './pages/questions/Q2';
 import Q3 from './pages/questions/Q3';
@@ -48,6 +49,7 @@ function App() {
     <Router>
     <div>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/Instructions">Instructions</Link></li>
         <li><Link to="/Q1">Question 1</Link></li>
         <li><Link to="/Q2">Question 2</Link></li>
         <li><Link to="/Q3">Question 3</Link></li>
@@ -61,6 +63,7 @@ function App() {
         <li><Link to="/final">Final</Link></li>
       <Routes>
         <Route path="/" element={<Home />} /> {/* default page */}
+        <Route path="/Instructions" element={<Instructions />} />
         <Route path="/Q1" element={<Q1 />} />
         <Route path="/Q2" element={<Q2 />} />
         <Route path="/Q3" element={<Q3 />} />

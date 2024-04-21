@@ -9,7 +9,7 @@ function GLC() {
       <Layout>
         <div>
             <h2>We recommend:</h2>
-            <h1>The Good Life Center</h1>
+            <h1 style={{ textAlign: 'left' }}>The Good Life Center</h1>
             <div style={{ display: 'flex', alignItems: 'stretch' }}>
                 <p style={{ marginTop: '50px', marginRight: '100px' }}>Schwarzman Center, 2nd Floor
                     <br/>New Haven, CT 06511
