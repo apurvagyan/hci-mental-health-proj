@@ -33,3 +33,13 @@
     width: 400px;
     font-size: 36px;
 }
+
+.textbox {
+    width: 750px;
+    height: 150px;
+    background: #597A88;
+    border-radius: 50px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

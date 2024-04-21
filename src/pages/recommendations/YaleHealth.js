@@ -1,7 +1,7 @@
 // YaleHealth.js
 
 import Layout from '../../components/Layout'
-import { SmallButton } from '../../components/Button';
+import { SmallButton } from '../../components/Components';
 import yaleHealth from '../../images/yale-health.png';
 
 function YaleHealth() {

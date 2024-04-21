@@ -1,7 +1,7 @@
 // GLC.js
 
 import Layout from '../../components/Layout'
-import { SmallButton } from '../../components/Button';
+import { SmallButton } from '../../components/Components';
 import glc from '../../images/glc.png';
 
 function GLC() {
@@ -13,10 +13,11 @@ function GLC() {
             <div style={{ display: 'flex', alignItems: 'stretch' }}>
                 <p style={{ marginTop: '50px', marginRight: '100px' }}>Schwarzman Center, 2nd Floor
                     <br/>New Haven, CT 06511
-                    <br/><br/>(203) 436-4000
+                    <br/><br/>Silliman College, 4th Floor
+                    <br/>New Haven, CT 06511
                 </p>
                 <div style={{ textAlign: 'right', marginTop: '0px' }}>
-                <img class="img-qr" src={glc} alt="yale health qr code"></img>
+                <img class="img-qr" src={glc} alt="good life qr code"></img>
                 </div>
             </div>
            

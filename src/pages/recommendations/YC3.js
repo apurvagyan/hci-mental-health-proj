@@ -1,7 +1,7 @@
 // YC3.js
 
 import Layout from '../../components/Layout'
-import { SmallButton } from '../../components/Button';
+import { SmallButton } from '../../components/Components';
 import yc3 from '../../images/yc3.png'
 
 function YC3() {
