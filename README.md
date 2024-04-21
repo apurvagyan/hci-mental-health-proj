@@ -108,13 +108,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Collaboration Record
 
 **Student Name and NetID:** Angelica Pham (akp37)
+
 **Contribution:** 
 
 **Student Name and NetID:** Apurva Mishra (am3826)
+
 **Contribution:** 
 
 **Student Name and NetID:** Kyra Kaya (klk56)
+
 **Contribution:** 
 
 **Student Name and NetID:** Nawal Naz Tareque (nt387)
+
 **Contribution:** 
