@@ -10,6 +10,7 @@ import GLC from './pages/recommendations/GLC';
 import Walden from './pages/recommendations/Walden';
 import YC3 from './pages/recommendations/YC3';
 import YaleHealth from './pages/recommendations/YaleHealth';
+import Testimonial from './pages/Testimonial';
 
 import CentralizedResources from './pages/CentralizedResources';
 import Final from './pages/Final';
@@ -56,6 +57,7 @@ function App() {
         <li><Link to="/YC3">YC3 Counseling</Link></li>
         <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
         <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
+        <li><Link to="/Testimonial">Testimonials</Link></li>
         <li><Link to="/final">Final</Link></li>
       <Routes>
         <Route path="/" element={<Home />} /> {/* default page */}
@@ -68,6 +70,7 @@ function App() {
         <Route path="/YC3" element={<YC3 />} />
         <Route path="/YaleHealth" element={<YaleHealth />} />
         <Route path="/CentralizedResources" element={<CentralizedResources />} />
+        <Route path="/Testimonial" element={<Testimonial />} />
         <Route path="/final" element={<Final />} />
 
         {/* Add more routes here */}
