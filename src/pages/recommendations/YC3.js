@@ -1,8 +1,8 @@
 // YC3.js
 
-import Layout from '../components/Layout'
-import { SmallButton } from '../components/Button';
-import yc3 from '../images/yc3.png'
+import Layout from '../../components/Layout'
+import { SmallButton } from '../../components/Button';
+import yc3 from '../../images/yc3.png'
 
 function YC3() {
 <<<<<<< HEAD:my-app/src/pages/YC3.js
@@ -22,13 +22,13 @@ function YC3() {
       <Layout>
         <div>
           <h2>We recommend:</h2>
-          <h1>Yale College Community Care (YC3)</h1>
+          <h1 style={{ textAlign: 'left' }}>Yale College Community Care (YC3)</h1>
           <div style={{ display: 'flex', alignItems: 'stretch' }}>
             <p style={{ marginTop: '50px', marginRight: '100px' }}>(203) 432-0290
               <br/>8:30am - 5pm
             </p>
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
-              <img src={yc3} style={{ width: '300px', height: '300px' }} alt="yc3 qr code"></img>
+              <img class="img-qr" src={yc3} alt="yc3 qr code"></img>
             </div>
 >>>>>>> e45582efa8e57fd50b071b44aa9c5e8ac9b3ad42:src/pages/YC3.js
           </div>

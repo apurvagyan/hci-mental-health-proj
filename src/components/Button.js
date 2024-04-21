@@ -8,10 +8,11 @@ const SmallButton = ({ onClick, text }) => {
     );
 };
 
-const LargeButton = ({ onClick, text }) => {
+const LargeButton = ({ onClick, img, alt, text }) => {
     return (
         <button className="button large" onClick={onClick}>
-        {text}
+            <img src={img} alt={alt}></img>
+            <br/>{text}
         </button>
     );
 };
