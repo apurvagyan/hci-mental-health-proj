@@ -2,10 +2,15 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Q1 from './pages/Q1';
-import Q2 from './pages/Q2';
-import YC3 from './pages/YC3';
-import YaleHealth from './pages/YaleHealth';
+import Q1 from './pages/questions/Q1';
+import Q2 from './pages/questions/Q2';
+import Q3 from './pages/questions/Q3';
+import Q4 from './pages/questions/Q4';
+import GLC from './pages/recommendations/GLC';
+import Walden from './pages/recommendations/Walden';
+import YC3 from './pages/recommendations/YC3';
+import YaleHealth from './pages/recommendations/YaleHealth';
+
 import CentralizedResources from './pages/CentralizedResources';
 import Final from './pages/Final';
 
@@ -44,6 +49,10 @@ function App() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/Q1">Question 1</Link></li>
         <li><Link to="/Q2">Question 2</Link></li>
+        <li><Link to="/Q3">Question 3</Link></li>
+        <li><Link to="/Q4">Question 4</Link></li>
+        <li><Link to="/GLC">GLC</Link></li>
+        <li><Link to="/Walden">Walden</Link></li>
         <li><Link to="/YC3">YC3 Counseling</Link></li>
         <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
         <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
@@ -52,6 +61,10 @@ function App() {
         <Route path="/" element={<Home />} /> {/* default page */}
         <Route path="/Q1" element={<Q1 />} />
         <Route path="/Q2" element={<Q2 />} />
+        <Route path="/Q3" element={<Q3 />} />
+        <Route path="/Q4" element={<Q4 />} />
+        <Route path="/GLC" element={<GLC />} />
+        <Route path="/Walden" element={<Walden />} />
         <Route path="/YC3" element={<YC3 />} />
         <Route path="/YaleHealth" element={<YaleHealth />} />
         <Route path="/CentralizedResources" element={<CentralizedResources />} />
