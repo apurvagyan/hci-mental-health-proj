@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './CountdownCircle.css'; 
 
-function CountdownCircle() {
+function CountdownCircle({ countdownStarted }) {
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    if (countdown === 0) {
-      // Navigate to a different page once countdown finishes
-      window.location.href = '/Instructions';
-    } else {
+    if (countdownStarted && countdown > 0) {
       const interval = setInterval(() => {
         setCountdown(prevCountdown => prevCountdown - 1);
       }, 1000);
 
       return () => clearInterval(interval);
+    } else if (countdown === 0) {
+      // Navigate to a different page once countdown finishes
+      window.location.href = '/Instructions';
     }
-  }, [countdown]);
+  }, [countdown, countdownStarted]);
 
   const circleStyle = {
     animationDuration: `${countdown}s` 
@@ -29,5 +29,5 @@ function CountdownCircle() {
     </div>
   );
 }
-  
-export default CountdownCircle; 
+
+export default CountdownCircle;

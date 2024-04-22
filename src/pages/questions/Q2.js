@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Layout from '../../components/Layout'
-import { LargeButton } from '../../components/Button';
+import { LargeButton } from '../../components/Components';
 
 import sunbathing from '../../images/sunbathing.png';
 import doctor from '../../images/doctor.png';

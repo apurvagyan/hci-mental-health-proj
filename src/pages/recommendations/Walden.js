@@ -1,7 +1,7 @@
 // Walden.js
 
 import Layout from '../../components/Layout'
-import { SmallButton } from '../../components/Button';
+import { SmallButton } from '../../components/Components';
 import walden from '../../images/walden.png';
 
 function Walden() {
@@ -16,7 +16,7 @@ function Walden() {
               <br/><br/>(203) 432-8255
             </p>
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
-              <img class="img-qr" src={walden} alt="yale health qr code"></img>
+              <img class="img-qr" src={walden} alt="walden qr code"></img>
             </div>
           </div>
           
