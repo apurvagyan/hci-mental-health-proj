@@ -37,7 +37,7 @@ var q4Flag = false;
 // var recommendation4Flag = false;
 // var resourceFlag = false;
 // var homeFlag = false;
-// var instructionsFlag = false;
+var instructionsFlag = false;
 // var countdown;
 
 
@@ -83,6 +83,10 @@ var frames = {
         var hand_raised = lh_height < head_height && rh_height < head_height;
 
         // Decision tree
+        if (!start_flag && hand_raised) {
+          Instructions(); 
+        }
+        
         if (!start_flag && q1Flag && option_left) {
           if (q2Flag && option_left) {
             if (q3Flag && option_left) {
