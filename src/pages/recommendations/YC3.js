@@ -5,19 +5,6 @@ import { SmallButton } from '../../components/Button';
 import yc3 from '../../images/yc3.png'
 
 function YC3() {
-<<<<<<< HEAD:my-app/src/pages/YC3.js
-  return (
-    <Layout>
-      <div>
-        <h2>We recommend:</h2>
-        <h1>Yale College Community Care (YC3)</h1>
-        <div style={{ display: 'flex', alignItems: 'stretch' }}>
-          <p style={{ marginTop: '50px', marginRight: '100px' }}>(203) 432-0290
-            <br />8:30am - 5pm
-          </p>
-          <div style={{ textAlign: 'right', marginTop: '0px' }}>
-            <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fyalehealth.yale.edu%2Fdepartment%2Fmental-health-counseling&chs=180x180&choe=UTF-8&chld=L|2" style={{ width: '300px', height: '300px' }} alt="yc3 qr code"></img>
-=======
     return (
       <Layout>
         <div>
@@ -30,14 +17,15 @@ function YC3() {
             <div style={{ textAlign: 'right', marginTop: '0px' }}>
               <img class="img-qr" src={yc3} alt="yc3 qr code"></img>
             </div>
->>>>>>> e45582efa8e57fd50b071b44aa9c5e8ac9b3ad42:src/pages/YC3.js
           </div>
+          
+          <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
+          <SmallButton text="explore other options" />
         </div>
-        <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
-        <SmallButton text="explore other options" />
-      </div>
-    </Layout>
-  );
-}
 
-export default YC3;
+      </Layout>
+      
+    );
+  }
+  
+  export default YC3;

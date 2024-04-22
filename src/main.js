@@ -22,31 +22,133 @@ var host = "cpsc484-02.stdusr.yale.internal:8888";
 
 // call start method to run frames
 $(document).ready(function () {
-    frames.start();
+  frames.start();
 });
 
+// flags for transitioning to other screens
+var start_flag = true;
+var q1Flag = false;
+var q2Flag = false;
+var q3Flag = false;
+var q4Flag = false;
+// var recommendation1Flag = false;
+// var recommendation2Flag = false;
+// var recommendation3Flag = false;
+// var recommendation4Flag = false;
+// var resourceFlag = false;
+// var homeFlag = false;
+// var instructionsFlag = false;
+// var countdown;
+
+
+// define frames for program execution
 // define frames for program execution
 var frames = {
-    socket: null,
+  socket: null,
 
-    start: function () {
-        var url = "ws://" + host + "/frames";
-        frames.socket = new WebSocket(url);
-        frames.socket.onmessage = function (event) {
-            frames.show(JSON.parse(event.data));
+  start: function () {
+    var url = "ws://" + host + "/frames";
+    frames.socket = new WebSocket(url);
+    frames.socket.onmessage = function (event) {
+      frames.show(JSON.parse(event.data));
+      let frame = JSON.parse(event.data);
+
+      // If a person is seen, start monitoring their movements
+      if (frame.people && frame["people"][0]) {
+        // Calculate head height
+        var head_height = frame["people"][0]["joints"][26]["position"]["y"];
+
+        // Calculate head length
+        var head_length = frame["people"][0]["joints"][26]["position"]["x"];
+
+        // Calculate left hand height
+        var lh_height = frame["people"][0]["joints"][8]["position"]["y"];
+
+        // Calculate left hand length
+        var lh_length = frame["people"][0]["joints"][8]["position"]["x"];
+
+        // Calculate right hand height
+        var rh_height = frame["people"][0]["joints"][15]["position"]["y"];
+
+        // Calculate right hand height
+        var rh_length = frame["people"][0]["joints"][15]["position"]["x"];
+
+        // Moving left
+        var option_left = lh_length < head_length && rh_length < head_length;
+
+        // Moving right
+        var option_right = lh_length > head_length && rh_length > head_length;
+
+        // Hand raising
+        var hand_raised = lh_height < head_height && rh_height < head_height;
+
+        // Decision tree
+        if (!start_flag && q1Flag && option_left) {
+          if (q2Flag && option_left) {
+            if (q3Flag && option_left) {
+              Walden();
+            }
+            else if (q3Flag && option_right) {
+              YC3();
+            }
+          }
+          else if (q2Flag && option_right) {
+            if (q3Flag && option_left) {
+              Walden();
+            }
+            else if (q3Flag && option_right) {
+              YaleHealth();
+            }
+          }
         }
-    },
 
-    show: function (frame) {
-        console.log(frame);
+        else if (!start_flag && q1Flag && option_right) {
+          if (q2Flag && option_left) {
+            if (q3Flag && option_left) {
+              if (q4Flag && option_left) {
+                GLC();
+              }
+              else if (q4Flag && option_right) {
+                Walden();
+              }
+            }
+            else if (q3Flag && option_right) {
+              if (q4Flag && option_left) {
+                GLC();
+              }
+              else if (q4Flag && option_right) {
+                YC3();
+              }
+            }
+          }
+          else if (q2Flag && option_right) {
+            if (q3Flag && option_left) {
+              if (q4Flag && option_left) {
+                GLC();
+              }
+              else if (q4Flag && option_right) {
+                Walden();
+              }
+            }
+            else if (q3Flag && option_right) {
+              YC3();
+            }
+          }
+        }
+      }
     }
+  },
+
+  show: function (frame) {
+    console.log(frame);
+  }
 };
 
 
 function App() {
   return (
     <Router>
-    <div>
+      <div>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/Instructions">Instructions</Link></li>
         <li><Link to="/Q1">Question 1</Link></li>
@@ -59,26 +161,30 @@ function App() {
         <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
         <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
         <li><Link to="/final">Final</Link></li>
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* default page */}
-        <Route path="/Instructions" element={<Instructions />} />
-        <Route path="/Q1" element={<Q1 />} />
-        <Route path="/Q2" element={<Q2 />} />
-        <Route path="/Q3" element={<Q3 />} />
-        <Route path="/Q4" element={<Q4 />} />
-        <Route path="/GLC" element={<GLC />} />
-        <Route path="/Walden" element={<Walden />} />
-        <Route path="/YC3" element={<YC3 />} />
-        <Route path="/YaleHealth" element={<YaleHealth />} />
-        <Route path="/CentralizedResources" element={<CentralizedResources />} />
-        <Route path="/final" element={<Final />} />
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* default page */}
+          <Route path="/Instructions" element={<Instructions />} />
+          <Route path="/Q1" element={<Q1 />} />
+          <Route path="/Q2" element={<Q2 />} />
+          <Route path="/Q3" element={<Q3 />} />
+          <Route path="/Q4" element={<Q4 />} />
+          <Route path="/GLC" element={<GLC />} />
+          <Route path="/Walden" element={<Walden />} />
+          <Route path="/YC3" element={<YC3 />} />
+          <Route path="/YaleHealth" element={<YaleHealth />} />
+          <Route path="/CentralizedResources" element={<CentralizedResources />} />
+          <Route path="/final" element={<Final />} />
 
-        {/* Add more routes here */}
-      </Routes>
-    </div>
-  </Router>
+          {/* Add more routes here */}
+        </Routes>
+      </div>
+    </Router>
 
-);
+  );
 };
 
 export default App;
+
+
+// if (frame.people && frame["people"][0]) {
+
