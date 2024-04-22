@@ -66,24 +66,17 @@ function CountdownCircle() {
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    const interval = setInterval(() => 
-    {
-      setCountdown(prevCountdown => 
-        {
-        if (prevCountdown > 0) 
-        {
-          return prevCountdown - 1;
-        } 
-        else 
-        {
-          clearInterval(interval);
-          return 0;
-        }
-      });
-    }, 1000);
+    if (countdown === 0) {
+      // Navigate to a different page once countdown finishes
+      window.location.href = '/Instructions';
+    } else {
+      const interval = setInterval(() => {
+        setCountdown(prevCountdown => prevCountdown - 1);
+      }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearInterval(interval);
+    }
+  }, [countdown]);
 
   const circleStyle = {
     animationDuration: `${countdown}s` 
@@ -98,6 +91,6 @@ function CountdownCircle() {
   );
 }
   
-  export default CountdownCircle; 
+export default CountdownCircle; 
 
 
