@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Home from './pages/Home';
 import Instructions from './pages/instructions';
@@ -48,19 +48,6 @@ function App() {
   return (
     <Router>
     <div>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/Instructions">Instructions</Link></li>
-        <li><Link to="/Q1">Question 1</Link></li>
-        <li><Link to="/Q2">Question 2</Link></li>
-        <li><Link to="/Q3">Question 3</Link></li>
-        <li><Link to="/Q4">Question 4</Link></li>
-        <li><Link to="/GLC">GLC</Link></li>
-        <li><Link to="/Walden">Walden</Link></li>
-        <li><Link to="/YC3">YC3 Counseling</Link></li>
-        <li><Link to="/YaleHealth">Yale Health Counseling</Link></li>
-        <li><Link to="/CentralizedResources">Centralized Resources</Link></li>
-        <li><Link to="/Testimonial">Testimonials</Link></li>
-        <li><Link to="/final">Final</Link></li>
       <Routes>
         <Route path="/" element={<Home />} /> {/* default page */}
         <Route path="/Instructions" element={<Instructions />} />
