@@ -3,7 +3,7 @@ import React from 'react';
 
 import Layout from '../components/Layout'
 
-function instructions() {
+function Instructions() {
   return (
     <Layout>
         <h1 style={{ fontSize: '125px' }}>instructions</h1>
@@ -20,5 +20,5 @@ function instructions() {
   );
 }
 
-export default instructions;
+export default Instructions;
 
