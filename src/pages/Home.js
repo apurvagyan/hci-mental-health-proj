@@ -57,7 +57,7 @@ function Home() {
       {handsRaised && <Countdown />}
       </div>
       <div className = "bottom-text">
-        stand still for 5 seconds to continue..
+        raise both hands to continue..
       </div>
       <div className = "bottom-final"> and take a <b><i>deep breath</i></b></div>
     </div>
