@@ -31,14 +31,8 @@ var q1Flag = false;
 var q2Flag = false;
 var q3Flag = false;
 var q4Flag = false;
-// var recommendation1Flag = false;
-// var recommendation2Flag = false;
-// var recommendation3Flag = false;
-// var recommendation4Flag = false;
-// var resourceFlag = false;
-// var homeFlag = false;
 var instructionsFlag = false;
-// var countdown;
+
 
 
 // define frames for program execution
@@ -86,7 +80,7 @@ var frames = {
         if (!start_flag && hand_raised) {
           Instructions(); 
         }
-        
+
         if (!start_flag && q1Flag && option_left) {
           if (q2Flag && option_left) {
             if (q3Flag && option_left) {
