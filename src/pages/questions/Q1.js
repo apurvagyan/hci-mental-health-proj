@@ -1,3 +1,4 @@
+// Q1.js
 import React, { useEffect, useState} from 'react';
 import HandRaisedChecker from '../HandRaised';
 
@@ -92,3 +93,4 @@ function Q1() {
 }
 
 export default Q1;
+
