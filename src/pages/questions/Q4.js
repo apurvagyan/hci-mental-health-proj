@@ -1,8 +1,10 @@
 // Q4.js
 import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-import Layout from '../../components/Layout';
-import { LargeButton } from '../../components/Button';
+
+import Layout from '../../components/Layout'
+import { SmallButton, LargeButton } from '../../components/Components';
+
 import meditation from '../../images/meditation.png';
 import talk from '../../images/talk.png';
 
@@ -126,7 +128,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
   return (
     <Layout>
         <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
-        <div className="container">
+        <div class="container">
           <LargeButton img={meditation} 
                        alt="person meditating with sparkles around them" 
                        text="do self care"
@@ -137,12 +139,8 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
                        text="talk to someone"
                        isHandRaised={isRightHandRaised} />
         </div>
-        {isLeftHandRaised && (
-          <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />
-        )}
-        {isRightHandRaised && (
-          <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />
-        )}
+        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
+        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Walden" />}
     </Layout>
   );
 }

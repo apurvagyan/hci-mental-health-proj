@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-import Layout from '../../components/Layout';
+
+import Layout from '../../components/Layout'
+// import { LargeButton } from '../../components/Components';
 import { LargeButton } from '../../components/Button';
+
 import expert from '../../images/expert.png';
 import friend from '../../images/friend.png';
 
@@ -85,28 +88,20 @@ function Q3({ setAnswer }) {
 
   return (
     <Layout>
-      <h1 style={{ marginBottom: '-100px' }}>I would rather talk to...</h1>
-      <div className="container">
-        <LargeButton
-          img={expert}
-          alt="person with an award"
-          text="a professional"
-          isHandRaised={isLeftHandRaised}
-        />
-        <div className="divider"></div>
-        <LargeButton
-          img={friend}
-          alt="two people with arms around each other's shoulders"
-          text="another student"
-          isHandRaised={isRightHandRaised}
-        />
-      </div>
-      {isLeftHandRaised && (
-        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />
-      )}
-      {isRightHandRaised && (
-        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />
-      )}
+        <h1 style={{ marginBottom: '-100px' }}>i would rather talk to... </h1>
+        <div class="container">
+          <LargeButton img={expert} 
+                       alt="person with an award" 
+                       text="a professional"
+                       isHandRaised={isLeftHandRaised}></LargeButton>
+          <div class="divider"></div>
+          <LargeButton img={friend} 
+                       alt="two people with arms around each others shoulders"
+                       text="another student"
+                       isHandRaised={isRightHandRaised}></LargeButton>
+        </div>
+        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
+        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
     </Layout>
   );
 }

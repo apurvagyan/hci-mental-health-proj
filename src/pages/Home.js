@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import './Home.css'; 
+// import Layout from '../components/Layout'
 import CountdownCircle from './CountdownCircle';
 
 function Home() {
@@ -70,24 +72,24 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
-      <div className="main-text">
-        feeling down or stressed lately?
-      </div>
-      <div className="sub-text">
-        Let us help you find the best mental health and 
-        <div class="col">
-          wellness resource <b><i>for you.</i></b>
-        </div>
-      </div>
-      <div className="countdown">
-        {handsRaised && <CountdownCircle countdownStarted={countdownStarted} />}
-      </div>
-      <div className="bottom-text">
-        raise both hands to continue...
-      </div>
-      <div className="bottom-final"> and take a <b><i>deep breath</i></b></div>
-    </div>
+      <div className="home-container">
+            <div className="main-text">
+              feeling down or stressed lately?
+            </div>
+            <div className="sub-text">
+              Let us help you find the best mental health and 
+              <div class="col">
+                wellness resource <b><i>for you.</i></b>
+              </div>
+            </div>
+            <div className="countdown">
+              {handsRaised && <CountdownCircle countdownStarted={countdownStarted} />}
+            </div>
+            <div className="bottom-text">
+              raise both hands to continue...
+            </div>
+            <div className="bottom-final"> and take a <b><i>deep breath</i></b></div>
+          </div>
   );
 }
 
