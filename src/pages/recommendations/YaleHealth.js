@@ -82,8 +82,8 @@ function YaleHealth() {
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YaleHealthTestimonials" />}
         <div class="button-container">
-          <SmallButton text="explore other options" />
-          <SmallButton text="see what others think" />
+          <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
+          <SmallButton text="see what others think" isHandRaised={isRightHandRaised} />
         </div>
       </div>
     </Layout>
