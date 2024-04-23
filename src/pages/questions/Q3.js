@@ -3,7 +3,7 @@ import React from 'react';
 import { useEffect, useState} from 'react';
 
 import Layout from '../../components/Layout'
-import { LargeButton } from '../../components/Button';
+import { LargeButton } from '../../components/Components';
 
 import expert from '../../images/expert.png';
 import friend from '../../images/friend.png';

@@ -11,7 +11,11 @@ import GLC from './pages/recommendations/GLC';
 import Walden from './pages/recommendations/Walden';
 import YC3 from './pages/recommendations/YC3';
 import YaleHealth from './pages/recommendations/YaleHealth';
-import Testimonial from './pages/Testimonial';
+import GLCTestimonials from './pages/testimonials/GLC';
+import WaldenTestimonials from './pages/testimonials/Walden';
+import YC3Testimonials from './pages/testimonials/YC3';
+import YaleHealthTestimonials from './pages/testimonials/YaleHealth';
+// import Testimonial from './pages/Testimonial';
 
 import CentralizedResources from './pages/CentralizedResources';
 import Final from './pages/Final';
@@ -59,9 +63,13 @@ function App() {
         <Route path="/Walden" element={<Walden />} />
         <Route path="/YC3" element={<YC3 />} />
         <Route path="/YaleHealth" element={<YaleHealth />} />
+        <Route path="/GLCTestimonials" element={<GLCTestimonials />} />
+        <Route path="/WaldenTestimonials" element={<WaldenTestimonials />} />
+        <Route path="/YC3Testimonials" element={<YC3Testimonials />} />
+        <Route path="/YaleHealthTestimonials" element={<YaleHealthTestimonials />} />
         <Route path="/CentralizedResources" element={<CentralizedResources />} />
-        <Route path="/Testimonial" element={<Testimonial />} />
-        <Route path="/final" element={<Final />} />
+        {/* <Route path="/Testimonial" element={<Testimonial />} /> */}
+        {/* <Route path="/final" element={<Final />} /> */}
 
         {/* Add more routes here */}
       </Routes>
