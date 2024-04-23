@@ -21,8 +21,13 @@ function YC3() {
               <TextBox text="Sometimes the counselors are unequipped to deal with your mental health struggles. When I went, they actually worsened my stress and I thought they were somewhat dismissive of my feelings."></TextBox>
             </div>
             
-            <img class="img-qr" src={yc3} alt="yc3 qr code" style={{ marginRight: '0px' }}></img>
-          </div>
+            <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+              <img class="img-qr" src={yc3} alt="yc3 code" style={{ margin: '0px', width: '425px' }}></img>
+              <p style={{ alignSelf: 'center', textAlign: 'center', fontSize: '24px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
+              <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
+                  <SmallButton text="start over" />
+              </div>
+            </div>          </div>
         </div>
       </Layout>
       

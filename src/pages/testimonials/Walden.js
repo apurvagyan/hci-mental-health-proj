@@ -21,7 +21,13 @@ function Walden() {
               <TextBox text="The person that I talked to on the hotline was a little rude and judgmental, but when I called the other day they were a nice, active listener."></TextBox>
             </div>
             
-            <img class="img-qr" src={walden} alt="walden qr code" style={{ marginRight: '0px' }}></img>
+            <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+              <img class="img-qr" src={walden} alt="walden qr code" style={{ margin: '0px', width: '425px' }}></img>
+              <p style={{ alignSelf: 'center', textAlign: 'center', fontSize: '24px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
+              <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
+                  <SmallButton text="start over" />
+              </div>
+            </div>
           </div>
         </div>
       </Layout>

@@ -21,7 +21,13 @@ function YaleHealth() {
               <TextBox text="I waited very long before I got to see a therapist, and even longer to see a psychiatrist and receive medication. If you have urgent mental health issues, you might need to start somewhere else."></TextBox>
             </div>
             
-            <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginRight: '0px' }}></img>
+            <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+              <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ margin: '0px', width: '425px' }}></img>
+              <p style={{ alignSelf: 'center', textAlign: 'center', fontSize: '24px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
+              <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
+                  <SmallButton text="start over" />
+              </div>
+            </div>
           </div>
         </div>
       </Layout>

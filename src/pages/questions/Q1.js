@@ -73,7 +73,7 @@ function Q1() {
 
   return (
     <Layout>
-        <h1 style={{ marginTop: '20px', marginBottom: '-100px' }}>i am looking for... </h1>
+        <h1 style={{ marginTop: '30px', marginBottom: '-100px' }}>i am looking for... </h1>
         <div class="container">
           <LargeButton img={mentalHealthIcon} 
                        alt="person's head with brain" 
@@ -84,7 +84,7 @@ function Q1() {
           <LargeButton img={wellnessIcon} alt="person's head with lotus flower" text="wellness resources" isHandRaised={isRightHandRaised}></LargeButton>
         </div>
         <div style={{ marginTop: '-140px' }}>
-        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
           <SmallButton text="go back"></SmallButton>
         </div>
        

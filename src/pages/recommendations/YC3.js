@@ -77,7 +77,7 @@ function YC3() {
           </div>
         </div>
 
-        <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
+        <p style={{ fontSize: '24px', color: 'white' }}>use your <i><b>left or right hand </b>to select</i></p>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YC3Testimonials" />}
         <div class="button-container">

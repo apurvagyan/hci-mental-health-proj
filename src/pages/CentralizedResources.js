@@ -58,13 +58,9 @@ function CentralizedResources() {
                 <div class="container">
                     <img class="img-qr" src={mentalHealthImage} alt="doc qr code" style={{ width: '300px', height: '300px' }}></img>
                 </div>
-                <div class="button-container">
-                    <SmallButton text="explore other options" />
-                    <SmallButton text="see what others think" />
-                </div>
                 {handsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
 
-                <p style={{ fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
+                <p style={{ alignSelf: 'center', textAlign: 'center', fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
                 <div class="button-container">
                     <SmallButton text="start over" />
                 </div>
