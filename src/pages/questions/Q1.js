@@ -1,5 +1,6 @@
 // Q1.js
 import React, { useEffect, useState} from 'react';
+import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
 import { LargeButton } from '../../components/Button';
@@ -10,7 +11,7 @@ import wellnessIcon from '../../images/wellness-resources.png';
 function Q1() {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
-
+  const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
     // set up host for becton center tv
@@ -43,19 +44,28 @@ function Q1() {
       
       if (left < head) {
         setIsLeftHandRaised(true);
-        window.location.href = "/Q2";
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
 
       } 
       else if (right < head)
       {
         setIsRightHandRaised(true);
-        window.location.href = "/Q2";
+        if (!countdownStarted) 
+        {
+          setCountdownStarted(true);
+        }
       }
       else 
       {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        if (countdownStarted) 
+        {
+          setCountdownStarted(false);
+        }
     }
     }
   };
@@ -72,6 +82,8 @@ function Q1() {
           <div class="divider"></div>
           <LargeButton img={wellnessIcon} alt="person's head with lotus flower" text="wellness resources" isHandRaised={isRightHandRaised}></LargeButton>
         </div>
+        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
+        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
       {/* </div> */}
       {/* <div> help button
         <p class='help-text'>raise both hands for help!</p>
@@ -81,3 +93,4 @@ function Q1() {
 }
 
 export default Q1;
+

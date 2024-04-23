@@ -1,4 +1,4 @@
-import '../components/Button.css';
+import '../components/Components';
 
 const SmallButton = ({ onClick, text }) => {
     return (
