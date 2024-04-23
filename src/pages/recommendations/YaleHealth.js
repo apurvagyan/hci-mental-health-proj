@@ -19,8 +19,10 @@ function YaleHealth() {
               <img class="img-qr" src={yaleHealth} alt="yale health qr code"></img>
             </div>
           </div>
-          
-          <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
+        </div>
+
+        <p style={{ fontSize: '24px', color: 'white' }}>use your <i><b>left or right hand</b> to select</i></p>
+        <div class="button-container">
           <SmallButton text="explore other options" />
         </div>
       </Layout>

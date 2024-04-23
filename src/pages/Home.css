@@ -12,7 +12,7 @@
     font-weight: bold; 
     font-size: 64px;
     padding-top: 20px;
-    padding-left: 40px;
+    /* padding-left: 40px; */
     padding-bottom: 20px;
 }
 
@@ -20,7 +20,7 @@
 {
     font-family: 'Source Serif Pro', serif;
     font-size: 30px;
-    padding-left: 40px;
+    /* padding-left: 40px; */
 }
 
 .countdown
@@ -31,14 +31,9 @@
 .container {
     position: relative;
     width: 100%;
-    height: 100vh; /* Set the height of the container */
-  }
-
-  .container {
-    position: relative;
-    height: 100vh; /* Set the container height to the full viewport height */
-  }
-  
+    /* height: 100vh; */
+    /* Set the height of the container */
+}
 
 .bottom-text
 {
@@ -46,10 +41,10 @@
     font-weight: bold; 
     position: absolute;
     font-size: 48px;
-    bottom: -180px;
+    bottom: 90px;
     right: 0;
     margin: 20px;
-    padding-right: 20px;
+    padding-right: 50px;
 }
 
 .bottom-final
@@ -57,8 +52,8 @@
     font-family: 'Source Serif Pro', serif;
     position: absolute;
     font-size: 30px;
-    bottom: -220px;
+    bottom: 45px;
     right: 0;
     margin: 20px;
-    padding-right: 20px;
+    padding-right: 50px;
 }

@@ -10,7 +10,7 @@ function YaleHealth() {
       <Layout>
         <div>
           <div>
-            <h2>Hear from other students think!</h2>
+            <h2>Hear what other students think!</h2>
             <h1 style={{ textAlign: 'left '}}>Yale Health Mental Health and Counseling</h1>
           </div>
             
@@ -21,7 +21,7 @@ function YaleHealth() {
               <TextBox text="I waited very long before I got to see a therapist, and even longer to see a psychiatrist and receive medication. If you have urgent mental health issues, you might need to start somewhere else."></TextBox>
             </div>
             
-            <img class="img-qr-large" src={yaleHealth} alt="yale health qr code" style={{ width: '400px' }}></img>
+            <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginRight: '0px' }}></img>
           </div>
             
           {/* <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p> */}
