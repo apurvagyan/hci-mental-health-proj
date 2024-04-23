@@ -15,7 +15,7 @@
     display: flex; 
     justify-content: center; /* Centers the buttons in the container */
     align-items: center; /* Aligns the buttons vertically */
-    gap: 20px; /* Defines a fixed gap between the buttons */
+    gap: 100px; /* Defines a fixed gap between the buttons */
     width: 100%; /* Set to full width or a specific width to control spacing */
 }
 
