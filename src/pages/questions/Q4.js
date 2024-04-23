@@ -4,8 +4,7 @@ import { useEffect, useState} from 'react';
 import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
-// import { LargeButton } from '../../components/Components';
-import { LargeButton } from '../../components/Button';
+import { SmallButton, LargeButton } from '../../components/Components';
 
 import meditation from '../../images/meditation.png';
 import talk from '../../images/talk.png';
@@ -74,7 +73,7 @@ function Q4() {
 
   return (
     <Layout>
-        <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
+        <h1 style={{ marginTop: '20px', marginBottom: '-100px' }}>i want to... </h1>
         <div class="container">
           <LargeButton img={meditation} 
                        alt="person meditating with sparkles around them" 
@@ -86,6 +85,11 @@ function Q4() {
                        text="talk to someone"
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
+        <div style={{ marginTop: '-140px' }}>
+          <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back"></SmallButton>
+        </div>
+
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Walden" />}
     </Layout>

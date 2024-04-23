@@ -10,7 +10,7 @@ function Walden() {
       <Layout>
         <div>
           <div>
-            <h2>Hear from other students think!</h2>
+            <h2>Hear what other students think!</h2>
             <h1 style={{ textAlign: 'left '}}>Walden Peer Counseling</h1>
           </div>
             
@@ -21,7 +21,7 @@ function Walden() {
               <TextBox text="The person that I talked to on the hotline was a little rude and judgmental, but when I called the other day they were a nice, active listener."></TextBox>
             </div>
             
-            <img class="img-qr-large" src={walden} alt="walden qr code" style={{ width: '400px' }}></img>
+            <img class="img-qr" src={walden} alt="walden qr code" style={{ marginRight: '0px' }}></img>
           </div>
         </div>
       </Layout>
