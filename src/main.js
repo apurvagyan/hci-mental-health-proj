@@ -18,7 +18,6 @@ import YaleHealthTestimonials from './pages/testimonials/YaleHealth';
 // import Testimonial from './pages/Testimonial';
 
 import CentralizedResources from './pages/CentralizedResources';
-import Final from './pages/Final';
 
 import $ from 'jquery';
 
@@ -169,7 +168,6 @@ function App() {
         <Route path="/YaleHealthTestimonials" element={<YaleHealthTestimonials />} />
         <Route path="/CentralizedResources" element={<CentralizedResources />} />
         {/* <Route path="/Testimonial" element={<Testimonial />} /> */}
-        {/* <Route path="/final" element={<Final />} /> */}
           {/* Add more routes here */}
         </Routes>
       </div>

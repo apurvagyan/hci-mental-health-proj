@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HandRaisedChecker from '../HandRaised';
+import HandRaisedChecker from './HandRaised';
 import Layout from '../components/Layout'
 import { SmallButton } from '../components/Components';
 import mentalHealthImage from '../images/mental_health_resources.png';
