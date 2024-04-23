@@ -17,6 +17,12 @@
     color: #8871AD;
 }
 
+.button.raised {
+    background-color: #C9B8E5;
+    border-color: #A08AC3;
+    color: #8871AD;
+}
+
 .small {
     border: 10px solid #597A88;
     border-radius: 100px;

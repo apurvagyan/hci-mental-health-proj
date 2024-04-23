@@ -8,13 +8,23 @@ const SmallButton = ({ onClick, text }) => {
     );
 };
 
-const LargeButton = ({ onClick, img, alt, text }) => {
+// const LargeButton = ({ onClick, img, alt, text }) => {
+//     return (
+//         <button className="button large" onClick={onClick}>
+//             <img src={img} alt={alt}></img>
+//             <br/>{text}
+//         </button>
+//     );
+// };
+
+const LargeButton = ({ onClick, img, alt, text, isHandRaised }) => {
     return (
-        <button className="button large" onClick={onClick}>
+        <button className={`button large ${isHandRaised ? 'raised' : ''}`}>
             <img src={img} alt={alt}></img>
             <br/>{text}
         </button>
     );
 };
+
 
 export { SmallButton, LargeButton };
