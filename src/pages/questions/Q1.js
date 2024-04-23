@@ -1,14 +1,16 @@
-// Q1.js
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout';
 import { LargeButton } from '../../components/Button';
-
 import mentalHealthIcon from '../../images/mental-health-icon.png';
 import wellnessIcon from '../../images/wellness-resources.png';
 
-function Q1() {
+const response1 = {
+  value: ''
+};
+
+function Q1({ setAnswer }) {
+
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
@@ -46,8 +48,8 @@ function Q1() {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
+          setAnswer('0');
         }
-
       } 
       else if (right < head)
       {
@@ -55,6 +57,7 @@ function Q1() {
         if (!countdownStarted) 
         {
           setCountdownStarted(true);
+          setAnswer('1');
         }
       }
       else 
@@ -72,25 +75,32 @@ function Q1() {
 
   return (
     <Layout>
-        <h1 style={{ marginBottom: '-100px' }}>i am looking for... </h1>
-        <div class="container">
-          <LargeButton img={mentalHealthIcon} 
-                       alt="person's head with brain" 
-                       text="mental health resources"
-                       isHandRaised={isLeftHandRaised}
-                      ></LargeButton>
-          <div class="divider"></div>
-          <LargeButton img={wellnessIcon} alt="person's head with lotus flower" text="wellness resources" isHandRaised={isRightHandRaised}></LargeButton>
-        </div>
-        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-      {/* </div> */}
-      {/* <div> help button
-        <p class='help-text'>raise both hands for help!</p>
-      </div> */}
+      <h1 style={{ marginBottom: '-100px' }}>I am looking for... </h1>
+      <div className="container">
+        <LargeButton
+          img={mentalHealthIcon}
+          alt="person's head with brain"
+          text="mental health resources"
+          isHandRaised={isLeftHandRaised}
+        />
+        <div className="divider"></div>
+        <LargeButton
+          img={wellnessIcon}
+          alt="person's head with lotus flower"
+          text="wellness resources"
+          isHandRaised={isRightHandRaised}
+        />
+      </div>
+      {isLeftHandRaised && (
+        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />
+      )}
+      {isRightHandRaised && (
+        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />
+      )}
     </Layout>
   );
 }
 
-export default Q1;
+export {response1};
 
+export default Q1;
