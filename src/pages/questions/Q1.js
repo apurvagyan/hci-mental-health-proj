@@ -104,7 +104,6 @@ function Q1({ setAnswer }) {
 
   return (
     <Layout>
-
         <h1 style={{ marginBottom: '-100px' }}>i am looking for... </h1>
         <div class="container">
           <LargeButton img={mentalHealthIcon} 
@@ -117,7 +116,7 @@ function Q1({ setAnswer }) {
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-        {bothHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Instructions" />}
+        {/* {bothHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Instructions" />} */}
       {/* </div> */}
       {/* <div> help button
         <p class='help-text'>raise both hands for help!</p>
