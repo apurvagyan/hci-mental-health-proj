@@ -25,8 +25,12 @@ function Q2() {
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame["people"][0]) {
-          checkHands(frame);
+        if (frame && frame.people.length >= 0) {
+          // Find the person closest to the screen
+          const closestPerson = findClosestPerson(frame.people);
+          if (closestPerson) {
+            checkHands(closestPerson);
+          }
         }
       }
     };
@@ -38,11 +42,28 @@ function Q2() {
     };
   }, []); // Empty dependency array to ensure this effect runs only once
 
-  const checkHands = (frame) => {
-    if (frame && frame.people[0]) {
-      const head = frame.people[0].joints[26].position.y;;
-      const left = frame.people[0].joints[8].position.y;
-      const right = frame.people[0].joints[15].position.y;
+  const findClosestPerson = (people) => {
+    let closestPerson = null;
+    let closestDepth = Infinity; 
+  
+    for (const person of people) {
+      // Assuming hip joint represents the depth
+      const hipDepth = person.joints[0].position.z;
+      if (hipDepth < closestDepth) 
+      {
+        closestDepth = hipDepth;
+        closestPerson = person;
+      }
+    }
+  
+    return closestPerson;
+  };
+
+  const checkHands = (person) => {
+    if (person) {
+      const head = person.joints[26].position.y;;
+      const left = person.joints[8].position.y;
+      const right = person.joints[15].position.y;
       
       if (left < head) {
         setIsLeftHandRaised(true);

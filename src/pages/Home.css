@@ -23,6 +23,11 @@
     padding-left: 40px;
 }
 
+.countdown-number {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20px;
+  }
+
 .countdown
 {
     align-items: center; 
@@ -46,7 +51,7 @@
     font-weight: bold; 
     position: absolute;
     font-size: 48px;
-    bottom: -180px;
+    bottom: 30px;
     right: 0;
     margin: 20px;
     padding-right: 20px;
@@ -57,7 +62,7 @@
     font-family: 'Source Serif Pro', serif;
     position: absolute;
     font-size: 30px;
-    bottom: -220px;
+    bottom: -5px;
     right: 0;
     margin: 20px;
     padding-right: 20px;
