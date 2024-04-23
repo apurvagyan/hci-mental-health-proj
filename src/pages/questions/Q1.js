@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Layout from '../../components/Layout'
-import { LargeButton } from '../../components/Components';
+import { LargeButton } from '../../components/Button';
 
 import mentalHealthIcon from '../../images/mental-health-icon.png';
 import wellnessIcon from '../../images/wellness-resources.png';
@@ -31,7 +31,7 @@ function Q1() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
   const seeQ1Hands = (frame) => {
     if (frame && frame.people[0]) {

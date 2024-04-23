@@ -5,6 +5,7 @@ import CountdownCircle from './CountdownCircle';
 function Home() {
   const [handsRaised, setHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
+  
 
   useEffect(() => {
     const host = "cpsc484-02.stdusr.yale.internal:8888";
