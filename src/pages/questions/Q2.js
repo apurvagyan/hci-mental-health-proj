@@ -25,7 +25,7 @@ function Q2() {
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame.people.length >= 0) {
+        if (frame) {
           // Find the person closest to the screen
           const closestPerson = findClosestPerson(frame.people);
           if (closestPerson) {

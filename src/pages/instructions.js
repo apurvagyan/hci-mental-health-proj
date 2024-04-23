@@ -18,13 +18,16 @@ function Instructions() {
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame.people.length >= 0) {
+        if (frame) {
           // Find the person closest to the screen
           const closestPerson = findClosestPerson(frame.people);
           if (closestPerson) {
             checkHands(closestPerson);
           }
         }
+        // if (frame && frame["people"][0]) {
+        //   checkHands(frame);
+        // }
       }
     };
 
@@ -56,7 +59,7 @@ function Instructions() {
     if (person) {
       const head = person.joints[26].position.y;;
       const left = person.joints[8].position.y;
-      const right = person.people[0].joints[15].position.y;
+      const right = person.joints[15].position.y;
       
       if (left < head && right < head)
       {
