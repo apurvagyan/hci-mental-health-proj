@@ -8,15 +8,6 @@ const SmallButton = ({ onClick, text }) => {
     );
 };
 
-// const LargeButton = ({ onClick, img, alt, text }) => {
-//     return (
-//         <button className="button large" onClick={onClick}>
-//             <img src={img} alt={alt}></img>
-//             <br/>{text}
-//         </button>
-//     );
-// };
-
 const LargeButton = ({ onClick, img, alt, text, isHandRaised }) => {
     return (
         <button className={`button large ${isHandRaised ? 'raised' : ''}`}>

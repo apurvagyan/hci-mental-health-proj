@@ -11,6 +11,9 @@ import friend from '../../images/friend.png';
 function Q3() {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [leftHandRaisedTime, setLeftHandRaisedTime] = useState(0);
+  const [rightHandRaisedTime, setRightHandRaisedTime] = useState(0);
+
 
   useEffect(() => {
     // set up host for becton center tv
@@ -33,7 +36,9 @@ function Q3() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
+
+
 
   const checkHands = (frame) => {
     if (frame && frame.people[0]) {
@@ -41,23 +46,32 @@ function Q3() {
       const left = frame.people[0].joints[8].position.y;
       const right = frame.people[0].joints[15].position.y;
       
+
       if (left < head) {
         setIsLeftHandRaised(true);
-        window.location.href = "/Q4";
-
-      } 
-      else if (right < head)
-      {
-        setIsRightHandRaised(true);
-        window.location.href = "/Q4";
-      }
-      else 
-      {
-        // Reset both hand states if neither hand is raised
+        setLeftHandRaisedTime(prevTime => prevTime + 1);
+        setRightHandRaisedTime(0); 
+        if (leftHandRaisedTime >= 5) 
+        {
+            window.location.href = "/Q4";
+        }
+    } else {
         setIsLeftHandRaised(false);
+        setLeftHandRaisedTime(0); 
+    }
+
+    if (right < head) {
+        setIsRightHandRaised(true);
+        setRightHandRaisedTime(prevTime => prevTime + 1);
+        setLeftHandRaisedTime(0);
+        if (rightHandRaisedTime >= 5) {
+            window.location.href = "/Q4";
+        }
+    } else {
         setIsRightHandRaised(false);
+        setRightHandRaisedTime(0);
     }
-    }
+}
   };
   return (
     <Layout>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState} from 'react';
 
 import Layout from '../../components/Layout'
-import { LargeButton } from '../../components/Components';
+import { LargeButton } from '../../components/Button';
 
 import mentalHealthIcon from '../../images/mental-health-icon.png';
 import wellnessIcon from '../../images/wellness-resources.png';
@@ -10,8 +10,6 @@ import wellnessIcon from '../../images/wellness-resources.png';
 function Q1() {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
-  const [leftHandRaisedTime, setLeftHandRaisedTime] = useState(0);
-  const [rightHandRaisedTime, setRightHandRaisedTime] = useState(0);
 
 
   useEffect(() => {
@@ -35,9 +33,7 @@ function Q1() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }); // Empty dependency array to ensure this effect runs only once
-
-
+  }, []); // Empty dependency array to ensure this effect runs only once
 
   const checkHands = (frame) => {
     if (frame && frame.people[0]) {
@@ -45,32 +41,23 @@ function Q1() {
       const left = frame.people[0].joints[8].position.y;
       const right = frame.people[0].joints[15].position.y;
       
-
       if (left < head) {
         setIsLeftHandRaised(true);
-        setLeftHandRaisedTime(prevTime => prevTime + 1);
-        setRightHandRaisedTime(0); 
-        if (leftHandRaisedTime >= 5) 
-        {
-            window.location.href = "/Q2";
-        }
-    } else {
-        setIsLeftHandRaised(false);
-        setLeftHandRaisedTime(0); 
-    }
+        window.location.href = "/Q2";
 
-    if (right < head) {
+      } 
+      else if (right < head)
+      {
         setIsRightHandRaised(true);
-        setRightHandRaisedTime(prevTime => prevTime + 1);
-        setLeftHandRaisedTime(0);
-        if (rightHandRaisedTime >= 5) {
-            window.location.href = "/Q2";
-        }
-    } else {
+        window.location.href = "/Q2";
+      }
+      else 
+      {
+        // Reset both hand states if neither hand is raised
+        setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
-        setRightHandRaisedTime(0);
     }
-}
+    }
   };
 
   return (
