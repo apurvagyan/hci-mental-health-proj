@@ -91,12 +91,3 @@ function GLC() {
 }
 
 export default GLC;
-          <SmallButton text="see what others think" />
-        </div>
-      </div>
-    </Layout>
-
-  );
-}
-
-export default GLC;

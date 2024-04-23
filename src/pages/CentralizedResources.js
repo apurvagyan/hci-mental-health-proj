@@ -63,12 +63,13 @@ function CentralizedResources() {
                     <SmallButton text="see what others think" />
                 </div>
                 {handsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
+
+                <p style={{ fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
                 <div class="button-container">
                     <SmallButton text="start over" />
                 </div>
 
-                {/* <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p> */}
-                {/* <SmallButton text="explore other options" /> */}
+                
             </div>
 
         </Layout>
