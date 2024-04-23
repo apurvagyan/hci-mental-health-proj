@@ -67,10 +67,6 @@ function Instructions() {
           <br/><br/> raise both hands for five seconds to begin!
         </p>
         {HandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
-      {/* </div> */}
-      {/* <div> help button
-        <p class='help-text'>raise both hands for help!</p>
-      </div> */}
     </Layout>
   );
 }

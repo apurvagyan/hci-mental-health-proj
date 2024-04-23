@@ -84,10 +84,6 @@ function Q1() {
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-      {/* </div> */}
-      {/* <div> help button
-        <p class='help-text'>raise both hands for help!</p>
-      </div> */}
     </Layout>
   );
 }

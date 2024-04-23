@@ -23,9 +23,6 @@ function GLC() {
             
             <img class="img-qr-large" src={glc} alt="good life center qr code" style={{ width: '400px' }}></img>
           </div>
-            
-          {/* <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p> */}
-          {/* <SmallButton text="explore other options" /> */}
         </div>
       </Layout>
       
