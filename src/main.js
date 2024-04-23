@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import React, { useState } from 'react'; 
 
 import Home from './pages/Home';
 import Instructions from './pages/instructions';
@@ -148,36 +149,59 @@ var frames = {
 
 
 function App() {
+  // Read initial values from localStorage or set default values
+  const answer1 = localStorage.getItem('answer1') || '';
+  const answer2 = localStorage.getItem('answer2') || '';
+  const answer3 = localStorage.getItem('answer3') || '';
+  const answer4 = localStorage.getItem('answer4') || '';
+
+  // Function to update localStorage with new values
+  const setLocalStorageAnswer = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+
   return (
     <Router>
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} /> {/* default page */}
-        <Route path="/Instructions" element={<Instructions />} />
-        <Route path="/Q1" element={<Q1 />} />
-        <Route path="/Q2" element={<Q2 />} />
-        <Route path="/Q3" element={<Q3 />} />
-        <Route path="/Q4" element={<Q4 />} />
-        <Route path="/GLC" element={<GLC />} />
-        <Route path="/Walden" element={<Walden />} />
-        <Route path="/YC3" element={<YC3 />} />
-        <Route path="/YaleHealth" element={<YaleHealth />} />
-        <Route path="/GLCTestimonials" element={<GLCTestimonials />} />
-        <Route path="/WaldenTestimonials" element={<WaldenTestimonials />} />
-        <Route path="/YC3Testimonials" element={<YC3Testimonials />} />
-        <Route path="/YaleHealthTestimonials" element={<YaleHealthTestimonials />} />
-        <Route path="/CentralizedResources" element={<CentralizedResources />} />
-        {/* <Route path="/Testimonial" element={<Testimonial />} /> */}
-          {/* Add more routes here */}
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Instructions" element={<Instructions />} />
+          <Route
+            path="/Q1"
+            element={<Q1 setAnswer={value => setLocalStorageAnswer('answer1', value)} />}
+          />
+          <Route
+            path="/Q2"
+            element={<Q2 setAnswer={value => setLocalStorageAnswer('answer2', value)} />}
+          />
+          <Route
+            path="/Q3"
+            element={<Q3 setAnswer={value => setLocalStorageAnswer('answer3', value)} />}
+          />
+          <Route
+            path="/Q4"
+            element={<Q4
+              setAnswer={value => setLocalStorageAnswer('answer4', value)}
+              answer1={answer1}
+              answer2={answer2}
+              answer3={answer3}
+              answer4={answer4}
+            />}
+          />
+          <Route path="/GLC" element={<GLC />} />
+          <Route path="/Walden" element={<Walden />} />
+          <Route path="/YC3" element={<YC3 />} />
+          <Route path="/YaleHealth" element={<YaleHealth />} />
+          <Route path="/GLCTestimonials" element={<GLCTestimonials />} />
+          <Route path="/WaldenTestimonials" element={<WaldenTestimonials />} />
+          <Route path="/YC3Testimonials" element={<YC3Testimonials />} />
+          <Route path="/YaleHealthTestimonials" element={<YaleHealthTestimonials />} />
+          <Route path="/CentralizedResources" element={<CentralizedResources />} />
+          <Route path="/final" element={<Final />} />
         </Routes>
       </div>
     </Router>
-
   );
-};
+}
 
 export default App;
-
-
-// if (frame.people && frame["people"][0]) {
-

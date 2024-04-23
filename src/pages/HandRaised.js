@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Home.css'; 
 
 function HandRaisedChecker({ countdownStarted, destinationURL }) {
       const [countdown, setCountdown] = useState(5);
@@ -17,7 +18,9 @@ function HandRaisedChecker({ countdownStarted, destinationURL }) {
       }, [countdown, countdownStarted, destinationURL]);
     
 
-  return null; // Since there's no visual component, return null
+  return (
+    <div className="countdown-number">{countdown}</div>
+  );
 }
 
 export default HandRaisedChecker;

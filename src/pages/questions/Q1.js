@@ -1,15 +1,18 @@
-// Q1.js
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout';
 import { LargeButton } from '../../components/Button';
-
 import mentalHealthIcon from '../../images/mental-health-icon.png';
 import wellnessIcon from '../../images/wellness-resources.png';
 
-function Q1() {
+const response1 = {
+  value: ''
+};
+
+function Q1({ setAnswer }) {
+
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
+  const [bothHandRaised, setbothHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
@@ -23,8 +26,12 @@ function Q1() {
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame["people"][0]) {
-          checkHands(frame);
+        if (frame) {
+          // Find the person closest to the screen
+          const closestPerson = findClosestPerson(frame.people);
+          if (closestPerson) {
+            checkHands(closestPerson);
+          }
         }
       }
     };
@@ -36,24 +43,49 @@ function Q1() {
     };
   }, []); // Empty dependency array to ensure this effect runs only once
 
-  const checkHands = (frame) => {
-    if (frame && frame.people[0]) {
-      const head = frame.people[0].joints[26].position.y;;
-      const left = frame.people[0].joints[8].position.y;
-      const right = frame.people[0].joints[15].position.y;
+  const findClosestPerson = (people) => {
+    let closestPerson = null;
+    let closestDepth = Infinity; 
+  
+    for (const person of people) {
+      // Assuming hip joint represents the depth
+      const hipDepth = person.joints[0].position.z;
+      if (hipDepth < closestDepth) 
+      {
+        closestDepth = hipDepth;
+        closestPerson = person;
+      }
+    }
+  
+    return closestPerson;
+  };
+
+  const checkHands = (person) => {
+    if (person) {
+      const head = person.joints[26].position.y;;
+      const left = person.joints[8].position.y;
+      const right = person.joints[15].position.y;
       
-      if (left < head) {
+      if (left < head && right > head) {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
+          setAnswer('0');
         }
-
       } 
-      else if (right < head)
+      else if (right < head && left > head)
       {
         setIsRightHandRaised(true);
         if (!countdownStarted) 
         {
+          setCountdownStarted(true);
+          setAnswer('1');
+        }
+      }
+      else if (left < head && right < head)
+      {
+        setbothHandRaised(true);
+        if (!countdownStarted) {
           setCountdownStarted(true);
         }
       }
@@ -88,5 +120,6 @@ function Q1() {
   );
 }
 
-export default Q1;
+export {response1};
 
+export default Q1;
