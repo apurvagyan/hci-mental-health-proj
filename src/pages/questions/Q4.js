@@ -1,8 +1,10 @@
 // Q4.js
 import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-import Layout from '../../components/Layout';
-import { LargeButton } from '../../components/Button';
+
+import Layout from '../../components/Layout'
+import { SmallButton, LargeButton } from '../../components/Components';
+
 import meditation from '../../images/meditation.png';
 import talk from '../../images/talk.png';
 
@@ -14,6 +16,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
   // const [q4Response, setQ4Response] = useState(null); // Define q4Response state
 
@@ -46,18 +49,17 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   const findClosestPerson = (people) => {
     let closestPerson = null;
-    let closestDepth = Infinity; 
-  
+    let closestDepth = Infinity;
+
     for (const person of people) {
       // Assuming hip joint represents the depth
       const hipDepth = person.joints[0].position.z;
-      if (hipDepth < closestDepth) 
-      {
+      if (hipDepth < closestDepth) {
         closestDepth = hipDepth;
         closestPerson = person;
       }
     }
-  
+
     return closestPerson;
   };
 
@@ -66,34 +68,42 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
       const head = person.joints[26].position.y;;
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
-      
-      if (left < head) {
-        setIsLeftHandRaised(true);
+
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('0'); // Save Q4 response
-        }
-
-      } 
-      else if (right < head)
-      {
-        setIsRightHandRaised(true);
-        if (!countdownStarted) 
-        {
-          setCountdownStarted(true);
-          setAnswer('1'); // Save Q4 response
         }
       }
-      else 
-      {
+      else if (left < head && right > head) {
+        setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+          setAnswer('0');
+        }
+      }
+      else if (right < head && left > head) {
+        setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+          setAnswer('1');
+        }
+      }
+      else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
-        if (countdownStarted) 
-        {
+        setBothHandsRaised(false);
+        if (countdownStarted) {
           setCountdownStarted(false);
         }
-    }
+      }
     }
   };
 
@@ -125,24 +135,25 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   return (
     <Layout>
-        <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
-        <div className="container">
-          <LargeButton img={meditation} 
-                       alt="person meditating with sparkles around them" 
-                       text="do self care"
-                       isHandRaised={isLeftHandRaised} />
-          <div className="divider"></div>
-          <LargeButton img={talk} 
-                       alt="two people talking with dialogue bubbles above them"
-                       text="talk to someone"
-                       isHandRaised={isRightHandRaised} />
-        </div>
-        {isLeftHandRaised && (
-          <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />
-        )}
-        {isRightHandRaised && (
-          <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />
-        )}
+      <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
+      <div class="container">
+        <LargeButton img={meditation}
+          alt="person meditating with sparkles around them"
+          text="do self care"
+          isHandRaised={isLeftHandRaised} />
+        <div className="divider"></div>
+        <LargeButton img={talk}
+          alt="two people talking with dialogue bubbles above them"
+          text="talk to someone"
+          isHandRaised={isRightHandRaised} />
+      </div>
+      <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+        <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
+      </div>
+      {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
+      {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Walden" />}
+      {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
     </Layout>
   );
 }

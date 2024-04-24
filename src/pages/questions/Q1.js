@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-import Layout from '../../components/Layout';
-import { LargeButton } from '../../components/Button';
+
+import Layout from '../../components/Layout'
+
 import mentalHealthIcon from '../../images/mental-health-icon.png';
 import wellnessIcon from '../../images/wellness-resources.png';
+import { SmallButton, LargeButton } from '../../components/Components';
+
 
 const response1 = {
   value: ''
@@ -12,7 +15,7 @@ const response1 = {
 function Q1({ setAnswer }) {
 
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
-  const [bothHandRaised, setbothHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
@@ -45,18 +48,17 @@ function Q1({ setAnswer }) {
 
   const findClosestPerson = (people) => {
     let closestPerson = null;
-    let closestDepth = Infinity; 
-  
+    let closestDepth = Infinity;
+
     for (const person of people) {
       // Assuming hip joint represents the depth
       const hipDepth = person.joints[0].position.z;
-      if (hipDepth < closestDepth) 
-      {
+      if (hipDepth < closestDepth) {
         closestDepth = hipDepth;
         closestPerson = person;
       }
     }
-  
+
     return closestPerson;
   };
 
@@ -65,66 +67,68 @@ function Q1({ setAnswer }) {
       const head = person.joints[26].position.y;;
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
-      
-      if (left < head && right > head) {
+
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
           setAnswer('0');
         }
-      } 
-      else if (right < head && left > head)
-      {
+      }
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
-        if (!countdownStarted) 
-        {
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
+        if (!countdownStarted) {
           setCountdownStarted(true);
           setAnswer('1');
         }
       }
-      else if (left < head && right < head)
-      {
-        setbothHandRaised(true);
-        if (!countdownStarted) {
-          setCountdownStarted(true);
-        }
-      }
-      else 
-      {
+      else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
-        if (countdownStarted) 
-        {
+        setBothHandsRaised(false);
+        if (countdownStarted) {
           setCountdownStarted(false);
         }
-    }
+      }
     }
   };
 
   return (
     <Layout>
-        <h1 style={{ marginBottom: '-100px' }}>i am looking for... </h1>
-        <div class="container">
-          <LargeButton img={mentalHealthIcon} 
-                       alt="person's head with brain" 
-                       text="mental health resources"
-                       isHandRaised={isLeftHandRaised}
-                      ></LargeButton>
-          <div class="divider"></div>
-          <LargeButton img={wellnessIcon} alt="person's head with lotus flower" text="wellness resources" isHandRaised={isRightHandRaised}></LargeButton>
-        </div>
-        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
-        {/* {bothHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Instructions" />} */}
-      {/* </div> */}
-      {/* <div> help button
-        <p class='help-text'>raise both hands for help!</p>
-      </div> */}
+      <h1 style={{ marginTop: '20px', marginBottom: '-100px' }}>i am looking for... </h1>
+      <div class="container">
+        <LargeButton img={mentalHealthIcon}
+          alt="person's head with brain"
+          text="mental health resources"
+          isHandRaised={isLeftHandRaised}
+        ></LargeButton>
+        <div class="divider"></div>
+        <LargeButton img={wellnessIcon} alt="person's head with lotus flower" text="wellness resources" isHandRaised={isRightHandRaised}></LargeButton>
+      </div>
+      <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+        <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
+      </div>
+      {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
+      {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
+      {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/instructions" />}
     </Layout>
   );
 }
 
-export {response1};
+export { response1 };
 
 export default Q1;

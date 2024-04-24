@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
-import Layout from '../../components/Layout';
-import { LargeButton } from '../../components/Button';
+
+import Layout from '../../components/Layout'
+
+import { SmallButton, LargeButton } from '../../components/Components';
+
 import expert from '../../images/expert.png';
 import friend from '../../images/friend.png';
 
 function Q3({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
@@ -58,24 +62,37 @@ function Q3({ setAnswer }) {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
       
-      if (left < head) {
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('0'); // Record response as 0 when left hand is raised
+          setAnswer('0');
         }
-      } 
-      else if (right < head) {
+      }
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('1'); // Record response as 1 when right hand is raised
+          setAnswer('1');
         }
-      } 
+      }
       else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }
@@ -85,28 +102,25 @@ function Q3({ setAnswer }) {
 
   return (
     <Layout>
-      <h1 style={{ marginBottom: '-100px' }}>I would rather talk to...</h1>
-      <div className="container">
-        <LargeButton
-          img={expert}
-          alt="person with an award"
-          text="a professional"
-          isHandRaised={isLeftHandRaised}
-        />
-        <div className="divider"></div>
-        <LargeButton
-          img={friend}
-          alt="two people with arms around each other's shoulders"
-          text="another student"
-          isHandRaised={isRightHandRaised}
-        />
-      </div>
-      {isLeftHandRaised && (
-        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />
-      )}
-      {isRightHandRaised && (
-        <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />
-      )}
+        <h1 style={{ marginBottom: '-100px' }}>i would rather talk to... </h1>
+        <div class="container">
+          <LargeButton img={expert} 
+                       alt="person with an award" 
+                       text="a professional"
+                       isHandRaised={isLeftHandRaised}></LargeButton>
+          <div class="divider"></div>
+          <LargeButton img={friend} 
+                       alt="two people with arms around each others shoulders"
+                       text="another student"
+                       isHandRaised={isRightHandRaised}></LargeButton>
+        </div>
+        <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
+        </div>
+        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
+        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
+        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
     </Layout>
   );
 }

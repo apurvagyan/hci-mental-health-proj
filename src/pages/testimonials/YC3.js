@@ -10,7 +10,7 @@ function YC3() {
       <Layout>
         <div>
           <div>
-            <h2>Hear from other students think!</h2>
+            <h2>Hear what other students think!</h2>
             <h1 style={{ textAlign: 'left '}}>Yale College Community Care (YC3)</h1>
           </div>
             
@@ -21,11 +21,8 @@ function YC3() {
               <TextBox text="Sometimes the counselors are unequipped to deal with your mental health struggles. When I went, they actually worsened my stress and I thought they were somewhat dismissive of my feelings."></TextBox>
             </div>
             
-            <img class="img-qr-large" src={yc3} alt="yc3 qr code" style={{ width: '400px' }}></img>
+            <img class="img-qr" src={yc3} alt="yc3 qr code" style={{ marginRight: '0px' }}></img>
           </div>
-            
-          {/* <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p> */}
-          {/* <SmallButton text="explore other options" /> */}
         </div>
       </Layout>
       

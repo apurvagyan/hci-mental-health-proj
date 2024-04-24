@@ -21,11 +21,8 @@ function GLC() {
               <TextBox text="The sandbox at the Good Life Center is super calming. 100% recommend just for that."></TextBox>
             </div>
             
-            <img class="img-qr-large" src={glc} alt="good life center qr code" style={{ width: '400px' }}></img>
+            <img class="img-qr" src={glc} alt="good life center qr code" style={{ marginRight: '0px' }}></img>
           </div>
-            
-          {/* <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p> */}
-          {/* <SmallButton text="explore other options" /> */}
         </div>
       </Layout>
       
