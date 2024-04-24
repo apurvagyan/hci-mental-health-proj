@@ -11,7 +11,6 @@ function Q2({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
   const [bothHandsRaised, setBothHandsRaised] = useState(false);
-  const [bothHandRaised, setbothHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
