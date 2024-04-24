@@ -10,6 +10,7 @@ import doctor from '../../images/doctor.png';
 function Q2({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
@@ -74,10 +75,17 @@ function Q2({ setAnswer }) {
           setAnswer('1'); // Record response as 1 when right hand is raised
         }
       } 
+      else if (left < head && right < head) {
+        setBothHandsRaised(true);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
       else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }
@@ -101,7 +109,7 @@ function Q2({ setAnswer }) {
         </div>
         <div style={{ marginTop: '-140px' }}>
         <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
-          <SmallButton text="go back"></SmallButton>
+          <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}

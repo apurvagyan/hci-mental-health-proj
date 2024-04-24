@@ -11,6 +11,7 @@ import friend from '../../images/friend.png';
 function Q3({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
@@ -75,10 +76,17 @@ function Q3({ setAnswer }) {
           setAnswer('1'); // Record response as 1 when right hand is raised
         }
       } 
+      else if (left < head && right < head) {
+        setBothHandsRaised(true);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
       else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }

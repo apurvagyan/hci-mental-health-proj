@@ -15,7 +15,7 @@ const response1 = {
 function Q1({ setAnswer }) {
 
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
-  const [bothHandRaised, setbothHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
@@ -83,7 +83,7 @@ function Q1({ setAnswer }) {
         }
       }
       else if (left < head && right < head) {
-        setbothHandRaised(true);
+        setBothHandsRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
@@ -92,6 +92,7 @@ function Q1({ setAnswer }) {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }
@@ -113,7 +114,7 @@ function Q1({ setAnswer }) {
       </div>
       <div style={{ marginTop: '-140px' }}>
         <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
-        <SmallButton text="go back"></SmallButton>
+        <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
       </div>
       {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
       {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
