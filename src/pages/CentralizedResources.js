@@ -8,7 +8,6 @@ function CentralizedResources() {
     const [bothHandsRaised, setBothHandsRaised] = useState(false);
     const [countdownStarted, setCountdownStarted] = useState(false);
 
-
     useEffect(() => {
         const host = "cpsc484-02.stdusr.yale.internal:8888";
 
@@ -17,9 +16,13 @@ function CentralizedResources() {
             const socket = new WebSocket(url);
             socket.onmessage = function (event) {
                 const frame = JSON.parse(event.data);
-                if (frame && frame["people"][0]) {
-                    checkHands(frame);
-                }
+                if (frame) {
+                    // Find the person closest to the screen
+                    const closestPerson = findClosestPerson(frame.people);
+                    if (closestPerson) {
+                      checkHands(closestPerson);
+                    }
+                  }
             }
         };
 
@@ -28,13 +31,29 @@ function CentralizedResources() {
         return () => {
             // Clean up WebSocket connection if needed
         };
-    }, []);
+    });
 
-    const checkHands = (frame) => {
-        if (frame && frame.people[0]) {
-            const head = frame.people[0].joints[26].position.y;
-            const left = frame.people[0].joints[8].position.y;
-            const right = frame.people[0].joints[15].position.y;
+    const findClosestPerson = (people) => {
+        let closestPerson = null;
+        let closestDepth = Infinity;
+    
+        for (const person of people) {
+          // Assuming hip joint represents the depth
+          const hipDepth = person.joints[0].position.z;
+          if (hipDepth < closestDepth) {
+            closestDepth = hipDepth;
+            closestPerson = person;
+          }
+        }
+    
+        return closestPerson;
+      };
+
+      const checkHands = (person) => {
+        if (person) {
+          const head = person.joints[26].position.y;
+          const left = person.joints[8].position.y;
+          const right = person.joints[15].position.y;
 
             if (left < head && right < head) {
                 setBothHandsRaised(true);
@@ -58,18 +77,14 @@ function CentralizedResources() {
                 <div class="container">
                     <img class="img-qr" src={mentalHealthImage} alt="doc qr code" style={{ width: '300px', height: '300px' }}></img>
                 </div>
-                <div class="button-container">
-                    <SmallButton text="explore other options" />
-                    <SmallButton text="see what others think" />
-                </div>
-                {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
-
-                <p style={{ fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
+                
+                <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '10px' }}>raise both hands to...</p>
                 <div class="button-container">
                     <SmallButton text="start over" isHandRaised={bothHandsRaised}></SmallButton>
                 </div>
-
-                
+                <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
+                {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
+                </div>
             </div>
 
         </Layout>

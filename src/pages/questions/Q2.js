@@ -36,7 +36,7 @@ function Q2({ setAnswer }) {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
   const findClosestPerson = (people) => {
     let closestPerson = null;
@@ -87,7 +87,8 @@ function Q2({ setAnswer }) {
           setAnswer('1');
         }
       }
-      else {
+      else 
+      {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
@@ -101,7 +102,7 @@ function Q2({ setAnswer }) {
 
   return (
     <Layout>
-        <h1 style={{ marginBottom: '-100px' }}>i would prefer a... </h1>
+        <h1 style={{ marginTop: '30px', marginBottom: '-100px' }}>i would prefer a... </h1>
         <div class="container">
           <LargeButton img={sunbathing} 
                        alt="person laying on chair with knees up under the sun" 
@@ -114,12 +115,14 @@ function Q2({ setAnswer }) {
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
         <div style={{ marginTop: '-140px' }}>
-        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px', textAlign: 'center' }}>raise both hands to...</p>
           <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
-        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
+          {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
+          {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
+          {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        </div>
     </Layout>
   );
 }

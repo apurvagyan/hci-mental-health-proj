@@ -21,8 +21,15 @@
     /* padding-left: 40px; */
 }
 
-.countdown {
-    align-items: center;
+
+.countdown-number {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 70px;
+  }
+
+.countdown
+{
+    align-items: center; 
     justify-content: center;
 }
 
