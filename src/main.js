@@ -197,7 +197,7 @@ function App() {
           <Route path="/YC3Testimonials" element={<YC3Testimonials />} />
           <Route path="/YaleHealthTestimonials" element={<YaleHealthTestimonials />} />
           <Route path="/CentralizedResources" element={<CentralizedResources />} />
-          <Route path="/final" element={<Final />} />
+          {/* <Route path="/final" element={<Final />} /> */}
         </Routes>
       </div>
     </Router>
