@@ -14,7 +14,7 @@ function Q2({ setAnswer }) {
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
-    const host = "cpsc484-03.stdusr.yale.internal:8888";
+    const host = "cpsc484-02.stdusr.yale.internal:8888";
 
     const startFrames = () => {
       const url = "ws://" + host + "/frames";

@@ -22,7 +22,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   useEffect(() => {
     // set up host for becton center tv
-    const host = "cpsc484-03.stdusr.yale.internal:8888";
+    const host = "cpsc484-02.stdusr.yale.internal:8888";
 
     // call start method to run frames
     const startFrames = () => {
