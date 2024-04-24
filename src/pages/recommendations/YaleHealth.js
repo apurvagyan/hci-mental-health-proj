@@ -89,7 +89,6 @@ function YaleHealth() {
         </div>
       </div>
     </Layout>
-
   );
 }
 

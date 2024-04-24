@@ -87,9 +87,7 @@ function YC3() {
           <SmallButton text="see what others think" isHandRaised={isRightHandRaised} />
         </div>
       </div>
-
     </Layout>
-
   );
 }
 

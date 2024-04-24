@@ -88,7 +88,6 @@ function GLC() {
         </div>
       </div>
     </Layout>
-
   );
 }
 
