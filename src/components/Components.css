@@ -11,6 +11,14 @@
     padding: 30px;
 }
 
+.button-container {
+    display: flex; 
+    justify-content: center; /* Centers the buttons in the container */
+    align-items: center; /* Aligns the buttons vertically */
+    gap: 100px; /* Defines a fixed gap between the buttons */
+    width: 100%; /* Set to full width or a specific width to control spacing */
+}
+
 .button:hover {
     background-color: #C9B8E5;
     border-color: #A08AC3;
@@ -24,7 +32,7 @@
 }
 
 .small {
-    border: 10px solid #597A88;
+    border: 15px solid #597A88;
     border-radius: 100px;
     padding: 8px 16px;
     font-size: 40px;

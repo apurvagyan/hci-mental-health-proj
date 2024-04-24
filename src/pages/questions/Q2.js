@@ -1,26 +1,22 @@
-// Q2.js
-import React from 'react';
-import { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
-// import { LargeButton } from '../../components/Components';
-import { LargeButton } from '../../components/Button';
+import { SmallButton, LargeButton } from '../../components/Components';
 
 import sunbathing from '../../images/sunbathing.png';
 import doctor from '../../images/doctor.png';
 
-function Q2() {
+function Q2({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [bothHandRaised, setbothHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
-    // set up host for becton center tv
     const host = "cpsc484-02.stdusr.yale.internal:8888";
 
-    // call start method to run frames
     const startFrames = () => {
       const url = "ws://" + host + "/frames";
       const socket = new WebSocket(url);
@@ -66,26 +62,24 @@ function Q2() {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
       
-      if (left < head && right > head) {
+      if (left < head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
+          setAnswer('0');
         }
 
       } 
-      else if (right < head && left > head)
+      else if (right < head)
       {
         setIsRightHandRaised(true);
-        if (!countdownStarted) 
-        {
-          setCountdownStarted(true);
-        }
-      }
-      else if (left < head && right < head)
-      {
-        setbothHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
+          setAnswer('1');
         }
       }
       else 
@@ -93,11 +87,11 @@ function Q2() {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
-        if (countdownStarted) 
-        {
+        setBothHandsRaised(false);
+        if (countdownStarted) {
           setCountdownStarted(false);
         }
-    }
+      }
     }
   };
 
@@ -115,9 +109,12 @@ function Q2() {
                        text="formal environment"
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
+        <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
+        </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-        {bothHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
       {/* </div> */}
       {/* <div> help button
         <p class='help-text'>raise both hands for help!</p>
@@ -127,4 +124,3 @@ function Q2() {
 }
 
 export default Q2;
-

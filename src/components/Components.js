@@ -2,17 +2,17 @@ import '../components/Components.css';
 
 import user from '../images/user.png';
 
-const SmallButton = ({ onClick, text }) => {
+const SmallButton = ({ onClick, text, isHandRaised }) => {
     return (
-        <button className="button small" onClick={onClick}>
+      <button className={`button small ${isHandRaised ? 'raised' : ''}`} onClick={onClick}>
         {text}
-        </button>
+      </button>
     );
-};
+};  
 
-const LargeButton = ({ onClick, img, alt, text }) => {
+const LargeButton = ({ onClick, img, alt, text, isHandRaised }) => {
     return (
-        <button className="button large" onClick={onClick}>
+        <button className={`button large ${isHandRaised ? 'raised' : ''}`}>
             <img src={img} alt={alt}></img>
             <br/>{text}
         </button>
