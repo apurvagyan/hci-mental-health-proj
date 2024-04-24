@@ -64,10 +64,11 @@ function GLC() {
             <TextBox text="I spend a lot of time here, especially in the Nap Room. Even when I'm stressed about never-ending midterms, GLC always has a really calm vibe."></TextBox>
             <TextBox text="The sandbox at the Good Life Center is super calming. 100% recommend just for that."></TextBox>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px' }}>
-            <img class="img-qr" src={glc} alt="good life center qr code" style={{ marginRight: '0px' }}></img>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}>Visit the website!</p>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px', marginTop: '-30px' }}>
+          <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>visit the website!</p>
+            <img class="img-qr" src={glc} alt="good life center qr code" style={{ marginTop: '10px', marginLeft: '0px', marginRight: '0px' }}></img>
+            
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>raise both hands to</p>
             <div className="button-container">
               <SmallButton text="start over" isHandRaised={bothHandsRaised} />
             </div>

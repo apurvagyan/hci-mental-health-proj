@@ -115,7 +115,7 @@ function Q3({ setAnswer }) {
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
         <div style={{ marginTop: '-140px' }}>
-        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px', textAlign: 'center' }}>raise both hands to...</p>
           <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}

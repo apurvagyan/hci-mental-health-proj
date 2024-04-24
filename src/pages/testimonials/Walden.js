@@ -64,10 +64,11 @@ function Walden() {
             <TextBox text="I stop by drop-in hours all the time, even if I just want to talk about how my day is going. They are really kind and supportive."></TextBox>
             <TextBox text="The person that I talked to on the hotline was a little rude and judgmental, but when I called the other day they were a nice, active listener."></TextBox>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px' }}>
-            <img class="img-qr" src={walden} alt="walden qr code" style={{ marginRight: '0px' }}></img>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}>Visit the website!</p>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px', marginTop: '-30px' }}>
+          <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>visit the website!</p>
+            <img class="img-qr" src={walden} alt="walden qr code" style={{ marginTop: '10px', marginLeft: '0px', marginRight: '0px' }}></img>
+            
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>raise both hands to</p>
             <div className="button-container">
               <SmallButton text="start over" isHandRaised={bothHandsRaised} />
             </div>

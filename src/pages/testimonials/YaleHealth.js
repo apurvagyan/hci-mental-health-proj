@@ -64,10 +64,11 @@ function YaleHealth() {
             <TextBox text="My provider was able to diagnose my mental health issues and has been teaching me helpful coping strategies. It took me a long time to be paired with them, but it was definitely worth waiting for."></TextBox>
             <TextBox text="I waited very long before I got to see a therapist, and even longer to see a psychiatrist and receive medication. If you have urgent mental health issues, you might need to start somewhere else."></TextBox>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px' }}>
-            <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginRight: '0px' }}></img>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}>Visit the website!</p>
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px', marginTop: '-30px' }}>
+          <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>visit the website!</p>
+            <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginTop: '10px', marginLeft: '0px', marginRight: '0px' }}></img>
+            
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>raise both hands to</p>
             <div className="button-container">
               <SmallButton text="start over" isHandRaised={bothHandsRaised} />
             </div>

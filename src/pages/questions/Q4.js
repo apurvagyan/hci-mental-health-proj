@@ -135,7 +135,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   return (
     <Layout>
-      <h1 style={{ marginBottom: '-100px' }}>i want to... </h1>
+      <h1 style={{ marginTop: '30px', marginBottom: '-100px' }}>i want to... </h1>
       <div class="container">
         <LargeButton img={meditation}
           alt="person meditating with sparkles around them"
@@ -148,7 +148,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
           isHandRaised={isRightHandRaised} />
       </div>
       <div style={{ marginTop: '-140px' }}>
-        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+      <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px', textAlign: 'center' }}>raise both hands to...</p>
         <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
       </div>
       {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
