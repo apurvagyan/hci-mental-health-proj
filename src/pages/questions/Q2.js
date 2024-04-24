@@ -61,15 +61,7 @@ function Q2({ setAnswer }) {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
       
-      if (left < head && right < head) {
-        setBothHandsRaised(true);
-        setIsLeftHandRaised(false);
-        setIsRightHandRaised(false);
-        if (!countdownStarted) {
-          setCountdownStarted(true);
-        }
-      }
-      else if (left < head && right > head) {
+      if (left < head) {
         setIsLeftHandRaised(true);
         setIsRightHandRaised(false);
         setBothHandsRaised(false);
@@ -77,8 +69,10 @@ function Q2({ setAnswer }) {
           setCountdownStarted(true);
           setAnswer('0');
         }
-      }
-      else if (right < head && left > head) {
+
+      } 
+      else if (right < head)
+      {
         setIsRightHandRaised(true);
         setIsLeftHandRaised(false);
         setBothHandsRaised(false);
@@ -87,7 +81,8 @@ function Q2({ setAnswer }) {
           setAnswer('1');
         }
       }
-      else {
+      else 
+      {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
@@ -119,7 +114,10 @@ function Q2({ setAnswer }) {
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+      {/* </div> */}
+      {/* <div> help button
+        <p class='help-text'>raise both hands for help!</p>
+      </div> */}
     </Layout>
   );
 }
