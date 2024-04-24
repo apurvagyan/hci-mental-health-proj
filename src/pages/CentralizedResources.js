@@ -8,7 +8,6 @@ function CentralizedResources() {
     const [bothHandsRaised, setBothHandsRaised] = useState(false);
     const [countdownStarted, setCountdownStarted] = useState(false);
 
-
     useEffect(() => {
         const host = "cpsc484-02.stdusr.yale.internal:8888";
 
@@ -28,7 +27,7 @@ function CentralizedResources() {
         return () => {
             // Clean up WebSocket connection if needed
         };
-    }, []);
+    });
 
     const checkHands = (frame) => {
         if (frame && frame.people[0]) {
@@ -58,18 +57,11 @@ function CentralizedResources() {
                 <div class="container">
                     <img class="img-qr" src={mentalHealthImage} alt="doc qr code" style={{ width: '300px', height: '300px' }}></img>
                 </div>
-                <div class="button-container">
-                    <SmallButton text="explore other options" />
-                    <SmallButton text="see what others think" />
-                </div>
                 {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
-
-                <p style={{ fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
+                <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
                 <div class="button-container">
                     <SmallButton text="start over" isHandRaised={bothHandsRaised}></SmallButton>
                 </div>
-
-                
             </div>
 
         </Layout>

@@ -32,7 +32,7 @@ function YaleHealth() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
   const checkHands = (frame) => {
     if (frame && frame.people[0]) {

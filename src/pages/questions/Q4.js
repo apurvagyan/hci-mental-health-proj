@@ -45,7 +45,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
   const findClosestPerson = (people) => {
     let closestPerson = null;

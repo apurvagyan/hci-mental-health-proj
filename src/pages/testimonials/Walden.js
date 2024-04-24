@@ -1,32 +1,95 @@
 // Walden.js
 
+import React, { useState, useEffect } from 'react';
+import HandRaisedChecker from '../HandRaised';
 import Layout from '../../components/Layout'
 import { SmallButton, TextBox } from '../../components/Components';
 
 import walden from '../../images/walden.png';
 
 function Walden() {
-    return (
-      <Layout>
+  const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
+  const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [countdownStarted, setCountdownStarted] = useState(false);
+
+  useEffect(() => {
+    // set up host for becton center tv
+    const host = "cpsc484-02.stdusr.yale.internal:8888";
+
+    // call start method to run frames
+    const startFrames = () => {
+      const url = "ws://" + host + "/frames";
+      const socket = new WebSocket(url);
+      socket.onmessage = function (event) {
+        const frame = JSON.parse(event.data);
+        if (frame && frame["people"][0]) {
+          checkHands(frame);
+        }
+      }
+    };
+
+    startFrames();
+
+    return () => {
+      // Clean up WebSocket connection if needed
+    };
+  }); // Empty dependency array to ensure this effect runs only once
+
+  const checkHands = (frame) => {
+    if (frame && frame.people[0]) {
+      const head = frame.people[0].joints[26].position.y;;
+      const left = frame.people[0].joints[8].position.y;
+      const right = frame.people[0].joints[15].position.y;
+
+      if (left < head && right > head) {
+        setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (right < head && left > head) {
+        setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else {
+        // Reset both hand states if neither hand is raised
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
+        if (countdownStarted) {
+          setCountdownStarted(false);
+        }
+      }
+    }
+  };
+  return (
+    <Layout>
+      <div>
         <div>
-          <div>
-            <h2>Hear what other students think!</h2>
-            <h1 style={{ textAlign: 'left '}}>Walden Peer Counseling</h1>
-          </div>
-            
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div>
-              <TextBox text="The anonymous 24/7 hotline is really convenient and accessible. No matter what time it is, I know I can talk to someone about what's going on in my life."></TextBox>
-              <TextBox text="I stop by drop-in hours all the time, even if I just want to talk about how my day is going. They are really kind and supportive."></TextBox>
-              <TextBox text="The person that I talked to on the hotline was a little rude and judgmental, but when I called the other day they were a nice, active listener."></TextBox>
-            </div>
-            
-            <img class="img-qr" src={walden} alt="walden qr code" style={{ marginRight: '0px' }}></img>
-          </div>
+          <h2>Hear what other students think!</h2>
+          <h1 style={{ textAlign: 'left ' }}>Walden Peer Counseling</h1>
         </div>
-      </Layout>
-      
-    );
-  }
-  
-  export default Walden;
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+            <TextBox text="The anonymous 24/7 hotline is really convenient and accessible. No matter what time it is, I know I can talk to someone about what's going on in my life."></TextBox>
+            <TextBox text="I stop by drop-in hours all the time, even if I just want to talk about how my day is going. They are really kind and supportive."></TextBox>
+            <TextBox text="The person that I talked to on the hotline was a little rude and judgmental, but when I called the other day they were a nice, active listener."></TextBox>
+          </div>
+          <img class="img-qr" src={walden} alt="walden qr code" style={{ marginRight: '0px' }}></img>
+        </div>
+        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
+        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        <div class="button-container">
+          <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
+          <SmallButton text="start over" isHandRaised={isRightHandRaised} />
+        </div>
+      </div>
+    </Layout>
+
+  );
+}
+
+export default Walden;
