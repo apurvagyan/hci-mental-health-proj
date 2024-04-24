@@ -8,15 +8,12 @@ import { SmallButton, TextBox } from '../../components/Components';
 import yaleHealth from '../../images/yale-health.png';
 
 function YaleHealth() {
-  const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
-  const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
-    // set up host for becton center tv
     const host = "cpsc484-02.stdusr.yale.internal:8888";
 
-    // call start method to run frames
     const startFrames = () => {
       const url = "ws://" + host + "/frames";
       const socket = new WebSocket(url);
@@ -33,32 +30,21 @@ function YaleHealth() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }); // Empty dependency array to ensure this effect runs only once
+  });
 
   const checkHands = (frame) => {
     if (frame && frame.people[0]) {
-      const head = frame.people[0].joints[26].position.y;;
+      const head = frame.people[0].joints[26].position.y;
       const left = frame.people[0].joints[8].position.y;
       const right = frame.people[0].joints[15].position.y;
 
-      if (left < head && right > head) {
-        setIsLeftHandRaised(true);
-        setIsRightHandRaised(false);
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
-      }
-      else if (right < head && left > head) {
-        setIsRightHandRaised(true);
-        setIsLeftHandRaised(false);
-        if (!countdownStarted) {
-          setCountdownStarted(true);
-        }
-      }
-      else {
-        // Reset both hand states if neither hand is raised
-        setIsLeftHandRaised(false);
-        setIsRightHandRaised(false);
+      } else {
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }
@@ -78,17 +64,18 @@ function YaleHealth() {
             <TextBox text="My provider was able to diagnose my mental health issues and has been teaching me helpful coping strategies. It took me a long time to be paired with them, but it was definitely worth waiting for."></TextBox>
             <TextBox text="I waited very long before I got to see a therapist, and even longer to see a psychiatrist and receive medication. If you have urgent mental health issues, you might need to start somewhere else."></TextBox>
           </div>
-          <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginRight: '0px' }}></img>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px' }}>
+            <img class="img-qr" src={yaleHealth} alt="yale health qr code" style={{ marginRight: '0px' }}></img>
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}>Visit the website!</p>
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
+            <div className="button-container">
+              <SmallButton text="start over" isHandRaised={bothHandsRaised} />
+            </div>
+          </div>
         </div>
-        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
-        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
-        <div class="button-container">
-          <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
-          <SmallButton text="start over" isHandRaised={isRightHandRaised} />
-        </div>
+        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
       </div>
     </Layout>
-
   );
 }
 
