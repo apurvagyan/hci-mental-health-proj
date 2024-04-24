@@ -1,8 +1,10 @@
 ## Installing dependencies and running the project
 
-To install any dependencies, run npm install in the terminal
+To install any dependencies, run npm install in the terminal.
 
-To run the project, run npm start in the terminal
+To run the project, run npm start in the terminal.
+
+These instructions are included in the run.sh file. The app is deployed to the localhost link in our web file.
 
 
 ## Problem Space
@@ -11,7 +13,7 @@ Students need to find mental health or wellness resources that fit their persona
 
 ## Brief Description of The Project
 
-Our solution is an interactive survey that guides the user through a roadmap to determine what mental health or wellness resource would best fit their wants and needs. The survey asks the user questions about their preferences, such as if they require mental health resources or wellness resources, and if they would prefer a formal or casual environment. The system then generates a resource recommendation based on the user responses, and provides real-life student testimonials for the corresponding resource. It also provides a centralized list of Yale mental health and wellness resources and their contact information if the user wants to explore other options by their own metrics.
+Our solution is an interactive survey that guides the user through a roadmap to determine what mental health or wellness resource would best fit their wants and needs. The survey asks the user questions about their preferences, such as if they require mental health resources or wellness resources, and if they would prefer a formal or casual environment. The system then generates a resource recommendation based on the user responses, and provides real-life student testimonials for the corresponding resource. It also provides a centralized list of Yale mental health and wellness resources and their contact information if the user wants to explore other options by their own metrics. Instructions for how to use the app are included in the service, and we aimed to make the project as simple and user-friendly as possible for creating a welcoming and helpful service that recommends mental health / wellness resources! We hope you like the project - we've really enjoyed the opportunity to take on a project like this!
 
 ## Key System Components
 
@@ -31,10 +33,11 @@ Our system must include some sort of QR code or other method of distributing inf
 * Decide which Yale mental health resource is the right one for their needs
 * Access all mental health resources easily in a centralized place
 
+These tasks were modified after review from the HCI staff and feedback.
+
 ## Deploment Environment Constraints
 
 Deployment constraints are that the user must have their head and arms visible within screen range, including when there arms are lifted above their head. Another constraint is that only one user may use the application at a time, and if there are multiple users in frame, the program will only recognize the person closest to the screen. Thus, if there are multiple people on the screen, the user should ensure that they are the closest to the screen. 
-
 
 
 ## Collaboration Record
@@ -45,6 +48,8 @@ Deployment constraints are that the user must have their head and arms visible w
 Angelica formatted most pages of the application and/or refined the layout, including the questions, recommendations, testimonials, and centralized resources pages. Angelica also created all of the HTML/CSS layout components, including the button hover to indicate the option selection. Angelica incorporated these components in the Javascript pages to modularize the code. Angelica ensured that the app displayed properly on the TV dimensions.
 
 **Student Name and NetID:** Apurva Mishra (am3826)
+
+For this assignment, Apurva spent a lot of time testing the code through the iterative development process, and was in charge of handling the GitHub and merging in all continuous branches of development to maintain a central version of the code. Apurva handled all of the navigation through the app, which included: developing the code mapping from the set of user's answers to the four questions to the recommended resource page on the basis of those answers, handling edge cases within the navigation (e.g. ensuring that each hand motion was mutually exclusive), and encoding the logic for elements that satisfy the heuristic principles we learned in class (e.g. the ability to go back, to see other options, get help through the instructions page, etc.). Apurva also was first responsible for reading in frames from the screen and developing a code architecture that made reading sensor logic easily applicable to each individual page, including saving responses in local storage for use between the pages. Apurva debugged the code that the team wrote each time they pushed to their branch and we wanted to merge pull requests into main, and tested that the web file and run.sh file were proper for the needs of the HCI staff for the purpose of the project. Apurva also reviewed and updated the README with content for the project description and dependencies, and was in close collaboration with the rest of the group at all times to lead and complete technical development of the app. We're all so excited to have completed a fully-fledged app system that recommends mental health resources!
 
 **Contribution:** 
 
