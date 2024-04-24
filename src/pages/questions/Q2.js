@@ -99,6 +99,10 @@ function Q2({ setAnswer }) {
                        text="formal environment"
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
+        <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back"></SmallButton>
+        </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
     </Layout>

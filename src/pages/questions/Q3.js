@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
-import { SmallButton, LargeButton } from '../../components/Components';
 
-// import { LargeButton } from '../../components/Components';
-// import { LargeButton } from '../../components/Button';
+import { LargeButton } from '../../components/Components';
 
 import expert from '../../images/expert.png';
 import friend from '../../images/friend.png';
