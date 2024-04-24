@@ -16,6 +16,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
   // const [q4Response, setQ4Response] = useState(null); // Define q4Response state
 
@@ -68,7 +69,13 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
 
-      if (left < head) {
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head) {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
@@ -87,6 +94,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (countdownStarted) {
           setCountdownStarted(false);
         }
@@ -136,10 +144,11 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
       </div>
       <div style={{ marginTop: '-140px' }}>
         <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
-        <SmallButton text="go back"></SmallButton>
+        <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
       </div>
       {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
       {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Walden" />}
+      {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
     </Layout>
   );
 }

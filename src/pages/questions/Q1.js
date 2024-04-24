@@ -68,7 +68,13 @@ function Q1({ setAnswer }) {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
 
-      if (left < head && right > head) {
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head && right > head) {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
@@ -80,12 +86,6 @@ function Q1({ setAnswer }) {
         if (!countdownStarted) {
           setCountdownStarted(true);
           setAnswer('1');
-        }
-      }
-      else if (left < head && right < head) {
-        setBothHandsRaised(true);
-        if (!countdownStarted) {
-          setCountdownStarted(true);
         }
       }
       else {
@@ -118,6 +118,7 @@ function Q1({ setAnswer }) {
       </div>
       {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
       {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
+      {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/instructions" />}
     </Layout>
   );
 }

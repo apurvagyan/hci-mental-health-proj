@@ -5,7 +5,7 @@ import { SmallButton } from '../components/Components';
 import mentalHealthImage from '../images/mental_health_resources.png';
 
 function CentralizedResources() {
-    const [handsRaised, setHandsRaised] = useState(false);
+    const [bothHandsRaised, setBothHandsRaised] = useState(false);
     const [countdownStarted, setCountdownStarted] = useState(false);
 
 
@@ -37,12 +37,12 @@ function CentralizedResources() {
             const right = frame.people[0].joints[15].position.y;
 
             if (left < head && right < head) {
-                setHandsRaised(true);
+                setBothHandsRaised(true);
                 if (!countdownStarted) {
                     setCountdownStarted(true);
                 }
             } else {
-                setHandsRaised(false);
+                setBothHandsRaised(false);
                 if (countdownStarted) {
                     setCountdownStarted(false);
                 }
@@ -62,11 +62,11 @@ function CentralizedResources() {
                     <SmallButton text="explore other options" />
                     <SmallButton text="see what others think" />
                 </div>
-                {handsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
+                {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
 
                 <p style={{ fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
                 <div class="button-container">
-                    <SmallButton text="start over" />
+                    <SmallButton text="start over" isHandRaised={bothHandsRaised}></SmallButton>
                 </div>
 
                 

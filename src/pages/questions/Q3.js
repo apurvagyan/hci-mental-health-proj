@@ -3,7 +3,7 @@ import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
 
-import { LargeButton } from '../../components/Components';
+import { SmallButton, LargeButton } from '../../components/Components';
 
 import expert from '../../images/expert.png';
 import friend from '../../images/friend.png';
@@ -62,7 +62,13 @@ function Q3({ setAnswer }) {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
       
-      if (left < head) {
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head) {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
@@ -74,12 +80,6 @@ function Q3({ setAnswer }) {
         if (!countdownStarted) {
           setCountdownStarted(true);
           setAnswer('1'); // Record response as 1 when right hand is raised
-        }
-      } 
-      else if (left < head && right < head) {
-        setBothHandsRaised(true);
-        if (!countdownStarted) {
-          setCountdownStarted(true);
         }
       }
       else {
@@ -108,8 +108,13 @@ function Q3({ setAnswer }) {
                        text="another student"
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
+        <div style={{ marginTop: '-140px' }}>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
+        </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
+        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
     </Layout>
   );
 }
