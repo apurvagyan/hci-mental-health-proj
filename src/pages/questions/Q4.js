@@ -152,8 +152,8 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
         <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
       </div>
       <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
-      {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/GLC" />}
-      {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Walden" />}
+      {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />}
+      {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL={getDestinationURL()} />}
       {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         </div>
       
