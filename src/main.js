@@ -23,7 +23,7 @@ import CentralizedResources from './pages/CentralizedResources';
 import $ from 'jquery';
 
 // set up host for becton center tv
-var host = "cpsc484-02.stdusr.yale.internal:8888";
+var host = "cpsc484-03.stdusr.yale.internal:8888";
 
 // call start method to run frames
 $(document).ready(function () {

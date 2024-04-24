@@ -10,7 +10,7 @@ function Instructions() {
 
   useEffect(() => {
     // set up host for becton center tv
-    const host = "cpsc484-02.stdusr.yale.internal:8888";
+    const host = "cpsc484-03.stdusr.yale.internal:8888";
 
     // call start method to run frames
     const startFrames = () => {

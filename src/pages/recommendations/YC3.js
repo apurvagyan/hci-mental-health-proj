@@ -13,7 +13,7 @@ function YC3() {
 
   useEffect(() => {
     // set up host for becton center tv
-    const host = "cpsc484-02.stdusr.yale.internal:8888";
+    const host = "cpsc484-03.stdusr.yale.internal:8888";
 
     // call start method to run frames
     const startFrames = () => {
@@ -40,15 +40,17 @@ function YC3() {
       const left = frame.people[0].joints[8].position.y;
       const right = frame.people[0].joints[15].position.y;
 
-      if (left < head) {
+      if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
 
       }
-      else if (right < head) {
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }

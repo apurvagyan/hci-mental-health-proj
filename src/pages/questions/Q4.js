@@ -22,7 +22,7 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
   useEffect(() => {
     // set up host for becton center tv
-    const host = "cpsc484-02.stdusr.yale.internal:8888";
+    const host = "cpsc484-03.stdusr.yale.internal:8888";
 
     // call start method to run frames
     const startFrames = () => {
@@ -71,23 +71,28 @@ function Q4({ setAnswer, answer1, answer2, answer3, answer4 }) {
 
       if (left < head && right < head) {
         setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
       }
-      else if (left < head) {
+      else if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('0'); // Save Q4 response
+          setAnswer('0');
         }
-
       }
-      else if (right < head) {
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('1'); // Save Q4 response
+          setAnswer('1');
         }
       }
       else {

@@ -15,7 +15,7 @@ function Q3({ setAnswer }) {
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
-    const host = "cpsc484-02.stdusr.yale.internal:8888";
+    const host = "cpsc484-03.stdusr.yale.internal:8888";
 
     const startFrames = () => {
       const url = "ws://" + host + "/frames";
@@ -64,22 +64,28 @@ function Q3({ setAnswer }) {
       
       if (left < head && right < head) {
         setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
       }
-      else if (left < head) {
+      else if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('0'); // Record response as 0 when left hand is raised
+          setAnswer('0');
         }
-      } 
-      else if (right < head) {
+      }
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
-          setAnswer('1'); // Record response as 1 when right hand is raised
+          setAnswer('1');
         }
       }
       else {
