@@ -68,7 +68,7 @@ function GLC() {
           <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>visit the website!</p>
             <img class="img-qr" src={glc} alt="good life center qr code" style={{ marginTop: '10px', marginLeft: '0px', marginRight: '0px' }}></img>
             
-            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>raise both hands to</p>
+            <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>raise both hands to...</p>
             <div className="button-container">
               <SmallButton text="start over" isHandRaised={bothHandsRaised} />
             </div>
