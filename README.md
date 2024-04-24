@@ -33,13 +33,7 @@ Our system must include some sort of QR code or other method of distributing inf
 
 ## Deploment Environment Constraints
 
-The greatest challenge our group encountered was difficulty in successfully uploading our project to the TV. We decided to create a React app for clean development that all members could easily contribute to – our team is also quite new to app development, so we attempted a React framework to learn more about general app development as well. This complicated our project upload because we could not keep all necessary files (mainly the index.html file) directly within the top-level folder. React apps use several subdirectories, and we struggled to understand either how to compress our code base or implement the web file with the path to our executable. We received help from TFs and through EdStem to write in the web file (which first led to the index.html, but was then modified to contain the app host link). Since we were not familiar with running server code with React apps, we also learned that we needed to include the run.sh file to execute commands we normally typed in the terminal to host our app.
-
-Another difficulty we encountered was sizing the components to the TV screen. Because all of our computer screens had different display dimensions, while some elements looked centered on one person’s computer, they were not on others. This was something that was difficult to fix because we had difficulty uploading our code to the TV, so we couldn’t see how the components we made would look on the dimensions of the TV. 
-
-Finally, we initially struggled to understand exactly how to connect our code to the frames from the Kinect, but were eventually able to retrieve the data for our program. 
-
-There was some difficulty with merging in different streams of development that team members worked on concurrently, but maintaining a GitHub and then handling merge conflicts allowed us to handle this and allow members to contribute to code in parallel.
+Deployment constraints are that the user must have their head and arms visible within screen range, including when there arms are lifted above their head. Another constraint is that only one user may use the application at a time, and if there are multiple users in frame, the program will only recognize the person closest to the screen. Thus, if there are multiple people on the screen, the user should ensure that they are the closest to the screen. 
 
 
 
@@ -56,6 +50,7 @@ There was some difficulty with merging in different streams of development that 
 **Student Name and NetID:** Kyra Kaya (klk56)
 
 **Contribution:** 
+For this assignment, Kyra was able to code the motion of hand raising for the home page, the instruction page, and all of the question pages. As well, Kyra coded the initial page navigation so that the home, instructions, and questions pages moved seamlessly together. Kyra also was able to connect the motion to the button highlighting effect, so that the buttons would highlight when a hand was raised. Kyra as well was able to create a function to detect if the hand had been raised for five seconds, and created a countdown so that user's know how much time there hand has been raised. Finally, Kyra was able to code a depth function that detects the person closest to the screen and only uses their kinect data, and integrated into the check hands function. Lastly, Kyra tested the motion and multi-person detection to determine that everything was working properly.
 
 **Student Name and NetID:** Nawal Naz Tareque (nt387)
 
