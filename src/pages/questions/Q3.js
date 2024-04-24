@@ -13,6 +13,7 @@ import friend from '../../images/friend.png';
 function Q3() {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandRaised, setbothHandRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
@@ -65,18 +66,25 @@ function Q3() {
       const left = person.joints[8].position.y;
       const right = person.joints[15].position.y;
       
-      if (left < head) {
+      if (left < head && right > head) {
         setIsLeftHandRaised(true);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
 
       } 
-      else if (right < head)
+      else if (right < head && left > head)
       {
         setIsRightHandRaised(true);
         if (!countdownStarted) 
         {
+          setCountdownStarted(true);
+        }
+      }
+      else if (left < head && right < head)
+      {
+        setbothHandRaised(true);
+        if (!countdownStarted) {
           setCountdownStarted(true);
         }
       }
@@ -109,6 +117,7 @@ function Q3() {
         </div>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
+        {bothHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
       {/* </div> */}
       {/* <div> help button
         <p class='help-text'>raise both hands for help!</p>
