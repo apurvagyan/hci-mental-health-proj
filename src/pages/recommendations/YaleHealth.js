@@ -79,8 +79,8 @@ function YaleHealth() {
             <img class="img-qr" src={yaleHealth} alt="yale health qr code"></img>
           </div>
         </div>
-
-        <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
+        <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i><b>raise your left hand</b> to select the left option</i></p>
+        <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i><b>raise your right hand</b> to select the right option</i></p>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YaleHealthTestimonials" />}
         <div class="button-container">
