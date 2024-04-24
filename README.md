@@ -110,7 +110,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 **Student Name and NetID:** Angelica Pham (akp37)
 
 **Contribution:** 
-Angelica formatted most pages of the application and/or refined the layout, including the questions, recommendations, testimonials, and centralized resources pages. Angelica also created all of the HTML/CSS layout components, including the button hover to indicate the option selection. Angelica incorporated these components in the Javascript pages to modularize the code. Angelica ensured that the app displayed properly on the TV dimensions.
+Angelica formatted most pages of the application and/or refined the layout, including the questions, recommendations, testimonials, and centralized resources pages. Angelica also created all of the HTML/CSS layout components, including the button hover to indicate the option selection. Angelica incorporated these components in the Javascript pages to modularize the code. Angelica ensured that the app displayed properly on the TV dimensions. Angelica resized and repositioned elements to fit on the TV screen, including the countdown. Angelica checked that users could clearly use and view the interface, that it was not difficult to look at and easy to understand, and also aesthetically pleasing. Angelica helped form the decision tree to generate recommendations.
 
 **Student Name and NetID:** Apurva Mishra (am3826)
 
