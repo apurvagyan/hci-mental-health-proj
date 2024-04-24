@@ -21,8 +21,12 @@ function YaleHealth() {
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame["people"][0]) {
-          checkHands(frame);
+        if (frame) {
+          // Find the person closest to the screen
+          const closestPerson = findClosestPerson(frame.people);
+          if (closestPerson) {
+            checkHands(closestPerson);
+          }
         }
       }
     };
@@ -32,13 +36,30 @@ function YaleHealth() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
-  const checkHands = (frame) => {
-    if (frame && frame.people[0]) {
-      const head = frame.people[0].joints[26].position.y;;
-      const left = frame.people[0].joints[8].position.y;
-      const right = frame.people[0].joints[15].position.y;
+  const findClosestPerson = (people) => {
+    let closestPerson = null;
+    let closestDepth = Infinity;
+
+    for (const person of people) {
+      // Assuming hip joint represents the depth
+      const hipDepth = person.joints[0].position.z;
+      if (hipDepth < closestDepth) {
+        closestDepth = hipDepth;
+        closestPerson = person;
+      }
+    }
+
+    return closestPerson;
+  };
+
+
+  const checkHands = (person) => {
+    if (person) {
+      const head = person.joints[26].position.y;;
+      const left = person.joints[8].position.y;
+      const right = person.joints[15].position.y;
 
       if (left < head && right > head) {
         setIsLeftHandRaised(true);
@@ -80,16 +101,17 @@ function YaleHealth() {
           </div>
         </div>
 
-        <p style={{ fontSize: '24px', color: 'white' }}><i><b>move your hand</b> over the button for 5 seconds to select it</i></p>
+        <p style={{ fontSize: '24px', color: 'white' }}>use your <i><b>left or right hand </b>to select</i></p>
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YaleHealthTestimonials" />}
+        </div>
         <div class="button-container">
           <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
           <SmallButton text="see what others think" isHandRaised={isRightHandRaised} />
         </div>
       </div>
     </Layout>
-
   );
 }
 

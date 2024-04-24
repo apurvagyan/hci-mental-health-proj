@@ -83,15 +83,17 @@ function Instructions() {
 
   return (
     <Layout>
-        <h1 style={{ fontSize: '90px', paddingTop: '50px' }}>instructions</h1>
-        <p style={{ fontFamily: 'Sora', textAlign: 'center', color: 'white', marginBottom: '-50px', fontSize: '30px' }}>answer a series of questions to receive a <b style={{ color: 'white'}}><i>personalized</i></b> mental health and wellness resource recommendation!</p>
-        <p style={{ fontSize: '40px', textAlign: 'center', marginTop: '0px', marginBottom: '-50px' }}>
+        <h1 style={{ fontSize: '90px', marginTop: '75px' }}>instructions</h1>
+        <p style={{ fontFamily: 'Sora', textAlign: 'center', color: 'white', marginBottom: '0px' }}>answer a series of questions to receive a <b style={{ color: 'white'}}><i>personalized</i></b> mental health and wellness resource recommendation!</p>
+        <p style={{ fontSize: '40px', textAlign: 'center', marginTop: '0px' }}>
           <br/><br/>• raise your<b style={{ color: 'white '}}><i> left hand</i></b> or <b style={{ color: 'white '}}><i>right hand </i></b>to choose your answer...
           <br/><br/>• during the questionnaire, raise <b style={{ color: 'white'}}><i>both hands</i></b> to go back!
         </p>
         <br/><br/><br/><br/>
         <h1>raise both hands to continue...</h1>
+        <div style={{ fontFamily: 'Sora', position: 'absolute', bottom: '50px', right: '100px' }}>
         {HandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        </div>
     </Layout>
   );
 }
