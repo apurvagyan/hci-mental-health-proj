@@ -45,7 +45,6 @@ function GLC() {
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
-
       }
       else if (right < head && left > head) {
         setIsRightHandRaised(true);
