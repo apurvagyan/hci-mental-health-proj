@@ -74,7 +74,8 @@ function Walden() {
             </div>
           </div>
         </div>
-        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
+        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}</div>
       </div>
     </Layout>
 

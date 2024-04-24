@@ -91,7 +91,9 @@ function Instructions() {
         </p>
         <br/><br/><br/><br/>
         <h1>raise both hands to continue...</h1>
+        <div style={{ fontFamily: 'Sora', position: 'absolute', bottom: '50px', right: '100px' }}>
         {HandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        </div>
     </Layout>
   );
 }

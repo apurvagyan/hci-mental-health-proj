@@ -119,9 +119,12 @@ function Q3({ setAnswer }) {
         <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px', textAlign: 'center' }}>raise both hands to...</p>
           <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q4" />}
         {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q2" />}
+        </div>
+        
     </Layout>
   );
 }

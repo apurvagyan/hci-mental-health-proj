@@ -112,12 +112,11 @@ function Q2({ setAnswer }) {
         <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px', textAlign: 'center' }}>raise both hands to...</p>
           <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
-        {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-        {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
-      {/* </div> */}
-      {/* <div> help button
-        <p class='help-text'>raise both hands for help!</p>
-      </div> */}
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
+          {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
+          {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
+          {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
+        </div>
     </Layout>
   );
 }

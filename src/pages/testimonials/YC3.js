@@ -66,7 +66,7 @@ function YC3() {
               <TextBox text="Sometimes the counselors are unequipped to deal with your mental health struggles. When I went, they actually worsened my stress and I thought they were somewhat dismissive of my feelings."></TextBox>
             </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px', marginTop: '-30px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '60px', marginTop: '-30px' }}>
           <p style={{ fontSize: '24px', color: 'white', textAlign: 'center', marginBottom: '0px' }}>visit the website!</p>
             <img class="img-qr" src={yc3} alt="yc3 qr code" style={{ marginTop: '10px', marginLeft: '0px', marginRight: '0px' }}></img>
             
@@ -74,6 +74,8 @@ function YC3() {
             <div className="button-container">
               <SmallButton text="start over" isHandRaised={bothHandsRaised} />
             </div>
+            <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
+              {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}</div>
           </div>
           </div>
         </div>

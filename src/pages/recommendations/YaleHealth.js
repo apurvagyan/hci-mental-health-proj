@@ -81,8 +81,10 @@ function YaleHealth() {
         </div>
 
         <p style={{ fontSize: '24px', color: 'white' }}>use your <i><b>left or right hand </b>to select</i></p>
+        <div style={{ fontFamily: 'Sora', position: 'absolute', top: '50px', right: '100px' }}>
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YaleHealthTestimonials" />}
+        </div>
         <div class="button-container">
           <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
           <SmallButton text="see what others think" isHandRaised={isRightHandRaised} />
