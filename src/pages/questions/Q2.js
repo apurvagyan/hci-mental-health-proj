@@ -1,6 +1,4 @@
-// Q2.js
-import React from 'react';
-import { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import HandRaisedChecker from '../HandRaised';
 
 import Layout from '../../components/Layout'
@@ -9,23 +7,26 @@ import { SmallButton, LargeButton } from '../../components/Components';
 import sunbathing from '../../images/sunbathing.png';
 import doctor from '../../images/doctor.png';
 
-function Q2() {
+function Q2({ setAnswer }) {
   const [isLeftHandRaised, setIsLeftHandRaised] = useState(false);
   const [isRightHandRaised, setIsRightHandRaised] = useState(false);
+  const [bothHandsRaised, setBothHandsRaised] = useState(false);
   const [countdownStarted, setCountdownStarted] = useState(false);
 
   useEffect(() => {
-    // set up host for becton center tv
     const host = "cpsc484-02.stdusr.yale.internal:8888";
 
-    // call start method to run frames
     const startFrames = () => {
       const url = "ws://" + host + "/frames";
       const socket = new WebSocket(url);
       socket.onmessage = function (event) {
         const frame = JSON.parse(event.data);
-        if (frame && frame["people"][0]) {
-          checkHands(frame);
+        if (frame) {
+          // Find the person closest to the screen
+          const closestPerson = findClosestPerson(frame.people);
+          if (closestPerson) {
+            checkHands(closestPerson);
+          }
         }
       }
     };
@@ -35,39 +36,66 @@ function Q2() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
-  const checkHands = (frame) => {
-    if (frame && frame.people[0]) {
-      const head = frame.people[0].joints[26].position.y;;
-      const left = frame.people[0].joints[8].position.y;
-      const right = frame.people[0].joints[15].position.y;
+  const findClosestPerson = (people) => {
+    let closestPerson = null;
+    let closestDepth = Infinity; 
+  
+    for (const person of people) {
+      // Assuming hip joint represents the depth
+      const hipDepth = person.joints[0].position.z;
+      if (hipDepth < closestDepth) 
+      {
+        closestDepth = hipDepth;
+        closestPerson = person;
+      }
+    }
+  
+    return closestPerson;
+  };
+
+  const checkHands = (person) => {
+    if (person) {
+      const head = person.joints[26].position.y;;
+      const left = person.joints[8].position.y;
+      const right = person.joints[15].position.y;
       
-      if (left < head) {
-        setIsLeftHandRaised(true);
+      if (left < head && right < head) {
+        setBothHandsRaised(true);
+        setIsLeftHandRaised(false);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
-
-      } 
-      else if (right < head)
-      {
-        setIsRightHandRaised(true);
-        if (!countdownStarted) 
-        {
+      }
+      else if (left < head && right > head) {
+        setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
+        setBothHandsRaised(false);
+        if (!countdownStarted) {
           setCountdownStarted(true);
+          setAnswer('0');
         }
       }
-      else 
-      {
+      else if (right < head && left > head) {
+        setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
+        setBothHandsRaised(false);
+        if (!countdownStarted) {
+          setCountdownStarted(true);
+          setAnswer('1');
+        }
+      }
+      else {
         // Reset both hand states if neither hand is raised
         setIsLeftHandRaised(false);
         setIsRightHandRaised(false);
-        if (countdownStarted) 
-        {
+        setBothHandsRaised(false);
+        if (countdownStarted) {
           setCountdownStarted(false);
         }
-    }
+      }
     }
   };
 
@@ -86,12 +114,12 @@ function Q2() {
                        isHandRaised={isRightHandRaised}></LargeButton>
         </div>
         <div style={{ marginTop: '-140px' }}>
-        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}><i>raise both hands to...</i></p>
-          <SmallButton text="go back"></SmallButton>
+        <p style={{ fontSize: '20px', color: 'white', marginBottom: '10px' }}>raise both hands to...</p>
+          <SmallButton text="go back" isHandRaised={bothHandsRaised}></SmallButton>
         </div>
-
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q3" />}
+        {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/Q1" />}
     </Layout>
   );
 }

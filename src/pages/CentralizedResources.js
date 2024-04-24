@@ -5,9 +5,8 @@ import { SmallButton } from '../components/Components';
 import mentalHealthImage from '../images/mental_health_resources.png';
 
 function CentralizedResources() {
-    const [handsRaised, setHandsRaised] = useState(false);
+    const [bothHandsRaised, setBothHandsRaised] = useState(false);
     const [countdownStarted, setCountdownStarted] = useState(false);
-
 
     useEffect(() => {
         const host = "cpsc484-02.stdusr.yale.internal:8888";
@@ -28,7 +27,7 @@ function CentralizedResources() {
         return () => {
             // Clean up WebSocket connection if needed
         };
-    }, []);
+    });
 
     const checkHands = (frame) => {
         if (frame && frame.people[0]) {
@@ -37,12 +36,12 @@ function CentralizedResources() {
             const right = frame.people[0].joints[15].position.y;
 
             if (left < head && right < head) {
-                setHandsRaised(true);
+                setBothHandsRaised(true);
                 if (!countdownStarted) {
                     setCountdownStarted(true);
                 }
             } else {
-                setHandsRaised(false);
+                setBothHandsRaised(false);
                 if (countdownStarted) {
                     setCountdownStarted(false);
                 }
@@ -58,14 +57,11 @@ function CentralizedResources() {
                 <div class="container">
                     <img class="img-qr" src={mentalHealthImage} alt="doc qr code" style={{ width: '300px', height: '300px' }}></img>
                 </div>
-                {handsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
-
-                <p style={{ alignSelf: 'center', textAlign: 'center', fontSize: '24px', color: 'white' }}><i>raise both hands to...</i></p>
+                {bothHandsRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/" />}
+                <p style={{ fontSize: '24px', color: 'white', textAlign: 'center' }}><i>raise both hands to</i></p>
                 <div class="button-container">
-                    <SmallButton text="start over" />
+                    <SmallButton text="start over" isHandRaised={bothHandsRaised}></SmallButton>
                 </div>
-
-                
             </div>
 
         </Layout>

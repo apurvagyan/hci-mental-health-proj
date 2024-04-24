@@ -32,7 +32,7 @@ function YaleHealth() {
     return () => {
       // Clean up WebSocket connection if needed
     };
-  }, []); // Empty dependency array to ensure this effect runs only once
+  }); // Empty dependency array to ensure this effect runs only once
 
   const checkHands = (frame) => {
     if (frame && frame.people[0]) {
@@ -40,15 +40,17 @@ function YaleHealth() {
       const left = frame.people[0].joints[8].position.y;
       const right = frame.people[0].joints[15].position.y;
 
-      if (left < head) {
+      if (left < head && right > head) {
         setIsLeftHandRaised(true);
+        setIsRightHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
 
       }
-      else if (right < head) {
+      else if (right < head && left > head) {
         setIsRightHandRaised(true);
+        setIsLeftHandRaised(false);
         if (!countdownStarted) {
           setCountdownStarted(true);
         }
@@ -82,12 +84,11 @@ function YaleHealth() {
         {isLeftHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/CentralizedResources" />}
         {isRightHandRaised && <HandRaisedChecker countdownStarted={countdownStarted} destinationURL="/YaleHealthTestimonials" />}
         <div class="button-container">
-          <SmallButton text="explore other options" />
-          <SmallButton text="see what others think" />
+          <SmallButton text="explore other options" isHandRaised={isLeftHandRaised} />
+          <SmallButton text="see what others think" isHandRaised={isRightHandRaised} />
         </div>
       </div>
     </Layout>
-
   );
 }
 

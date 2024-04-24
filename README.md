@@ -121,4 +121,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 **Student Name and NetID:** Nawal Naz Tareque (nt387)
 
-**Contribution:** 
+**Contribution:** Nawal added the motion and buttons for the testimonial pages and also worked on adding buttons and their respective motion for the centralized resource page. Nawal drafted the README initially and also did the initial decision tree for each of the resources. Nawal also incorporated the motion for the question pages and also helped with the linking. Nawal also helped to clean up a lot of the files by deleting unnecessary files and by removing warnings during the compilation process. Nawal also cleaned up most of the comments or any redundant code to refactor the code better. 
